@@ -1,0 +1,25 @@
+.outer_nav_container {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logoLink {
+    text-decoration: none;
+
+    .logo {
+      width: 50px;
+      margin-right: 10px;
+    }
+  }
+
+  .logo_links_container {
+    text-align: end;
+
+    .link {
+      margin-right: 30px;
+      text-decoration: none;
+      color: white;
+    }
+  }
+}

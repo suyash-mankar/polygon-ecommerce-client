@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { urls } from "../services/urls";
 import { createCustomer } from "../services/apis";
+import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +16,10 @@ function SignupPage() {
 
     async function createNewCustomer() {
       let res = await createCustomer(urls.createCustomer, body);
-      console.log(res);
+      if (res.customer) {
+        navigate("/customer/login");
+        return;
+      }
     }
     createNewCustomer();
   };

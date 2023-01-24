@@ -21,6 +21,15 @@ function NavbarComp() {
         <Link to="/" style={styles.homeLink}>
           <Button variant="outline-primary"> Home </Button>
         </Link>
+        <Link to="/customer/login" style={styles.homeLink}>
+          <Button variant="outline-primary"> LogIn </Button>
+        </Link>
+        <Link to="/customer/signup" style={styles.homeLink}>
+          <Button variant="outline-primary"> SignUp </Button>
+        </Link>
+        <Link to="/admin" style={styles.homeLink}>
+          <Button variant="outline-primary"> Admin </Button>
+        </Link>
       </Container>
     </Navbar>
   );

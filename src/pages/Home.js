@@ -4,14 +4,13 @@ import { getProduct } from "../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import "../styles/home.scss";
 import Loader from "../components/Loader";
+import { toast } from "react-toastify";
 
 function Home() {
   const dispatch = useDispatch();
   const { loading, error, products, productsCount } = useSelector(
     (state) => state.products
   );
-
-  const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
     dispatch(getProduct());

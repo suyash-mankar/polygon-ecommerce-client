@@ -42,11 +42,30 @@ export const getProduct = () => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    dispatch({ type: ALL_PRODUCT_FAIL, payload: error.response.data.message });
+    console.log(error.message);
+
+    dispatch({ type: ALL_PRODUCT_FAIL, payload: error.message });
+  }
+};
+
+export const getProductDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_DETAILS_REQUEST });
+
+    const { data } = await axios.get(`/products/${id}`);
+
+    dispatch({
+      type: PRODUCT_DETAILS_SUCCESS,
+      payload: data.product,
+    });
+  } catch (error) {
+    console.log(error.message);
+
+    dispatch({ type: PRODUCT_DETAILS_FAIL, payload: error.message });
   }
 };
 
 // clearing errors
-export const cleatErrors = () => async (dispatch) => {
+export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };

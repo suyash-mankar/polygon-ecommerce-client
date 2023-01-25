@@ -8,7 +8,7 @@ import {
 
 const reducer = combineReducers({
   products: productReducer,
-  productDetals: productDetailsReducer,
+  productDetails: productDetailsReducer,
 });
 
 let initialState = {};

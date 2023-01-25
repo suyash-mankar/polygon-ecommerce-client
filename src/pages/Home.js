@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { getProduct } from "../actions/productAction";
+import { clearErrors, getProduct } from "../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import "../styles/home.scss";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function Home() {
   const dispatch = useDispatch();
@@ -13,6 +14,10 @@ function Home() {
   );
 
   useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
     dispatch(getProduct());
   }, [dispatch]);
 
@@ -30,7 +35,11 @@ function Home() {
           {products &&
             products.map((product) => {
               return (
-                <div key={product._id} className="product_card">
+                <Link
+                  to={`/products/${product._id}`}
+                  key={product._id}
+                  className="product_card"
+                >
                   <img
                     src={product.image.url}
                     alt="product"
@@ -50,7 +59,7 @@ function Home() {
                       Add to cart
                     </Button>
                   </div>
-                </div>
+                </Link>
               );
             })}
         </div>

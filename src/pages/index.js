@@ -5,6 +5,7 @@ import Admin from "./Admin";
 import AdminOrdersPage from "./AdminOrdersPage";
 import AdminProductsPage from "./AdminProductsPage";
 import AdminNewProductPage from "./AdminNewProductPage";
+import ProductDetails from "./ProductDetails";
 
 export {
   Home,
@@ -14,4 +15,5 @@ export {
   AdminOrdersPage,
   AdminProductsPage,
   AdminNewProductPage,
+  ProductDetails,
 };

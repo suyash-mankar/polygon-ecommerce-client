@@ -10,13 +10,28 @@ import {
 } from "../pages";
 import NavbarComp from "./NavbarComp";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
 
 function App() {
+  const [addToCartProducts, setAddToCartProducts] = useState([]);
+  const [addToCartCount, setAddToCartCount] = useState(0);
+
+
   return (
     <Router>
-      <NavbarComp />
+      <NavbarComp addToCartCount={addToCartCount} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              addToCartCount={addToCartCount}
+              setAddToCartCount={setAddToCartCount}
+              addToCartProducts={addToCartProducts}
+              setAddToCartProducts={setAddToCartProducts}
+            />
+          }
+        />
         <Route path="/customer/login" element={<LoginPage />} />
         <Route path="/customer/signup" element={<SignupPage />} />
         <Route path="/admin" element={<Admin />} />

@@ -9,7 +9,7 @@ function AdminNewProductPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [qty, setQty] = useState("");
+  const [stock, setStock] = useState("");
   const [price, setPrice] = useState("");
   const [creator, setCreator] = useState("");
   const [collection, setCollection] = useState("");
@@ -24,19 +24,19 @@ function AdminNewProductPage() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("image", image);
-    formData.append("qty", qty);
+    formData.append("stock", stock);
     formData.append("price", price);
     formData.append("creator", creator);
     formData.append("collectionName", collection);
     formData.append("chain", chain);
 
-    async function createProductFnc() {
-      let res = await createProduct(urls.createProduct, formData);
-      if (res.product) {
-        navigate("/admin");
-      }
-    }
-    createProductFnc();
+    // async function createProductFnc() {
+    //   let res = await createProduct(urls.createProduct, formData);
+    //   if (res.product) {
+    //     navigate("/admin");
+    //   }
+    // }
+    // createProductFnc();
   };
 
   return (
@@ -75,8 +75,8 @@ function AdminNewProductPage() {
           <Form.Control
             type="number"
             placeholder="Enter product qty"
-            value={qty}
-            onChange={(e) => setQty(e.target.value)}
+            value={stock}
+            onChange={(e) => setStock(e.target.value)}
           />
         </Form.Group>
 

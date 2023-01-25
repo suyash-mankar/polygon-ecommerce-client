@@ -35,3 +35,12 @@ export const getAllProducts = async (url) => {
     console.log("error", error);
   }
 };
+
+export const addProductToCart = async (url, data) => {
+  try {
+    const response = await axios.post(url, data);
+    return response.data;
+  } catch (error) {
+    console.log("error", error);
+  }
+};

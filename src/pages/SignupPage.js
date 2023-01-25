@@ -5,6 +5,7 @@ import { createCustomer } from "../services/apis";
 import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,7 +13,6 @@ function SignupPage() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    let body = { email: email, password: password };
 
     async function createNewCustomer() {
       let res = await createCustomer(urls.createCustomer, body);
@@ -27,6 +27,19 @@ function SignupPage() {
   return (
     <div>
       <Form onSubmit={handleFormSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
+
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control

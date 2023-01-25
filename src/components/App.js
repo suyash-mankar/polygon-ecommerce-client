@@ -10,6 +10,7 @@ import {
   ProductDetails,
 } from "../pages";
 import NavbarComp from "./NavbarComp";
+import Search from "./Search";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 
@@ -33,6 +34,7 @@ function App() {
           }
         />
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/customer/login" element={<LoginPage />} />
         <Route path="/customer/signup" element={<SignupPage />} />
         <Route path="/admin" element={<Admin />} />

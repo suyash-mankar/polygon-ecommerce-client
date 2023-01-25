@@ -35,7 +35,7 @@ export const getProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("/products/all");
+    const { data } = await axios.get(`/products/all`);
 
     dispatch({
       type: ALL_PRODUCT_SUCCESS,

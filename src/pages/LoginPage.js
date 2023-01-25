@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { urls } from "../services/urls";
-import { loginCustomer } from "../services/apis";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
@@ -14,11 +12,6 @@ function LoginPage() {
     e.preventDefault();
     let body = { email: email, password: password };
 
-    async function loginCustomerFnc() {
-      let res = await loginCustomer(urls.loginCustomer, body);
-      navigate("/");
-    }
-    loginCustomerFnc();
   };
 
   return (
@@ -31,6 +24,7 @@ function LoginPage() {
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -44,6 +38,7 @@ function LoginPage() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </Form.Group>
 

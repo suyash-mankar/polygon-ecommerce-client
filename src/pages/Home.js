@@ -6,6 +6,7 @@ import "../styles/home.scss";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
 function Home() {
   const dispatch = useDispatch();
@@ -13,12 +14,14 @@ function Home() {
     (state) => state.products
   );
 
+  let { keyword } = useParams();
+
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct());
+    dispatch(getProduct(keyword));
   }, [dispatch]);
 
   const handleAddToCart = (product) => {

@@ -13,8 +13,6 @@ const ProductDetails = () => {
     (state) => state.productDetails
   );
 
-  console.log(product);
-
   let { id } = useParams();
 
   useEffect(() => {

@@ -44,8 +44,8 @@ function App() {
         />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/customer/login" element={<LoginPage />} />
-        <Route path="/customer/signup" element={<SignupPage />} />
+        <Route path="/user/login" element={<LoginPage />} />
+        <Route path="/user/register" element={<SignupPage />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/products" element={<AdminProductsPage />} />
         <Route path="/admin/products/new" element={<AdminNewProductPage />} />

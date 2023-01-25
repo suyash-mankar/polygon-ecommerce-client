@@ -14,14 +14,6 @@ function SignupPage() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    async function createNewCustomer() {
-      let res = await createCustomer(urls.createCustomer, body);
-      if (res.customer) {
-        navigate("/customer/login");
-        return;
-      }
-    }
-    createNewCustomer();
   };
 
   return (

@@ -54,14 +54,14 @@ function NavbarComp({ addToCartCount }) {
           )}
         </Container>
 
-        <div style={styles.cartIconContainer}>
+        <Link to="/cart" style={styles.cartIconContainer}>
           <img
             style={styles.cartIcon}
             src="https://cdn-icons-png.flaticon.com/512/9374/9374328.png"
             alt="cart-icon"
           />
           <span style={styles.cartCount}> {addToCartCount} </span>
-        </div>
+        </Link>
       </Container>
     </Navbar>
   );

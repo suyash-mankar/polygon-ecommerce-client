@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import store from "../store";
 import { loadUser } from "../actions/userAction";
 import { useSelector } from "react-redux";
+import Cart from "../pages/Cart";
 
 function App() {
   const [addToCartProducts, setAddToCartProducts] = useState([]);
@@ -46,6 +47,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/user/login" element={<LoginPage />} />
         <Route path="/user/register" element={<SignupPage />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/products" element={<AdminProductsPage />} />
         <Route path="/admin/products/new" element={<AdminNewProductPage />} />

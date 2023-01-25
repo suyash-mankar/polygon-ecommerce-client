@@ -26,3 +26,12 @@ export const createProduct = async (url, data) => {
     console.log("error", error);
   }
 };
+
+export const getAllProducts = async (url) => {
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.log("error", error);
+  }
+};

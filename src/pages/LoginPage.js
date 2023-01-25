@@ -16,7 +16,6 @@ function LoginPage() {
 
     async function loginCustomerFnc() {
       let res = await loginCustomer(urls.loginCustomer, body);
-      console.log(res);
       navigate("/");
     }
     loginCustomerFnc();

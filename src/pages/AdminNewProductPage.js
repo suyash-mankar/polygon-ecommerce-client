@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import "../styles/adminNewProductPage.scss";
 import { urls } from "../services/urls";
 import { createProduct } from "../services/apis";
+import { useNavigate } from "react-router-dom";
 
 function AdminNewProductPage() {
   const [title, setTitle] = useState("");
@@ -14,6 +15,8 @@ function AdminNewProductPage() {
   const [collection, setCollection] = useState("");
   const [chain, setChain] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let formData = new FormData();
@@ -24,10 +27,14 @@ function AdminNewProductPage() {
     formData.append("qty", qty);
     formData.append("price", price);
     formData.append("creator", creator);
+    formData.append("collectionName", collection);
     formData.append("chain", chain);
 
     async function createProductFnc() {
-      let product = await createProduct(urls.createProduct, formData);
+      let res = await createProduct(urls.createProduct, formData);
+      if (res.product) {
+        navigate("/admin");
+      }
     }
     createProductFnc();
   };
@@ -66,7 +73,7 @@ function AdminNewProductPage() {
         <Form.Group className="mb-3" controlId="formBasicDescription">
           <Form.Label>Qty Available</Form.Label>
           <Form.Control
-            type="text"
+            type="number"
             placeholder="Enter product qty"
             value={qty}
             onChange={(e) => setQty(e.target.value)}
@@ -76,7 +83,7 @@ function AdminNewProductPage() {
         <Form.Group className="mb-3" controlId="formBasicDescription">
           <Form.Label>Price</Form.Label>
           <Form.Control
-            type="text"
+            type="number"
             placeholder="Enter product qty"
             value={price}
             onChange={(e) => setPrice(e.target.value)}

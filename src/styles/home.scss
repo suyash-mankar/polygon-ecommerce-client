@@ -1,0 +1,31 @@
+.home_container {
+  background-color: #0b1426;
+
+  .all_products_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    padding: 50px;
+    width: 100%;
+
+    .product_card {
+      width: 20%;
+      height: 65vh;
+      border: 1px solid white;
+      margin: 20px;
+      border-radius: 10px;
+      background-color: white;
+
+      .product_img {
+        width: 100%;
+        object-fit: contain;
+        border-radius: 10px 10px 0px 0px;
+      }
+
+      .product_details {
+        padding: 20px;
+      }
+    }
+  }
+}

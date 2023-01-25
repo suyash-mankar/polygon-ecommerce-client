@@ -1,9 +1,20 @@
 import React from "react";
 import { Container, Navbar, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { logout } from "../actions/userAction";
 import "../styles/navbar.scss";
 
 function NavbarComp({ addToCartCount }) {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const logoutUser = () => {
+    dispatch(logout());
+    toast.success("logout successfull");
+  };
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container className="outer_nav_container">
@@ -19,15 +30,28 @@ function NavbarComp({ addToCartCount }) {
         </Link>
 
         <Container className="logo_links_container">
-          <Link to="/customer/login" className="link">
-            Sign In
-          </Link>
-          <Link to="/customer/signup" className="link">
-            Sign Up
-          </Link>
-          <Link to="/admin/products" className="link">
-            <Button variant="outline-light"> Admin </Button>
-          </Link>
+          {!isAuthenticated && (
+            <Link to="/user/login" className="link">
+              Sign In
+            </Link>
+          )}
+          {!isAuthenticated && (
+            <Link to="/user/register" className="link">
+              Sign Up
+            </Link>
+          )}
+
+          {isAuthenticated && (
+            <p className="link" onClick={logoutUser}>
+              LogOut
+            </p>
+          )}
+
+          {user?.role === "admin" && (
+            <Link to="/dashboard" className="link">
+              Admin Dashboard
+            </Link>
+          )}
         </Container>
 
         <div style={styles.cartIconContainer}>

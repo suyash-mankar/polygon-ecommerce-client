@@ -12,11 +12,20 @@ import {
 import NavbarComp from "./NavbarComp";
 import Search from "./Search";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import store from "../store";
+import { loadUser } from "../actions/userAction";
+import { useSelector } from "react-redux";
 
 function App() {
   const [addToCartProducts, setAddToCartProducts] = useState([]);
   const [addToCartCount, setAddToCartCount] = useState(0);
+
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
 
   return (
     <Router>

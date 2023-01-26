@@ -13,6 +13,7 @@ import {
   AdminProductsPage,
   AdminNewProductPage,
   ProductDetails,
+  ConfirmOrder,
 } from "../pages";
 import NavbarComp from "./NavbarComp";
 import Search from "./Search";
@@ -60,6 +61,15 @@ function App() {
           element={
             <ProtectedRoute>
               <Shipping />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/order/confirm"
+          element={
+            <ProtectedRoute>
+              <ConfirmOrder />
             </ProtectedRoute>
           }
         />

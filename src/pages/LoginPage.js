@@ -25,8 +25,6 @@ function LoginPage() {
 
   const redirectLink = location.search ? `/user/${location.search.split("=")[1]}` : "/";
 
-  console.log(redirectLink);
-
   useEffect(() => {
     if (error) {
       toast.error(error);

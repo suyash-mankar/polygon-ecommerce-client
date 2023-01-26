@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import {
   Home,
   LoginPage,
@@ -17,6 +22,8 @@ import store from "../store";
 import { loadUser } from "../actions/userAction";
 import { useSelector } from "react-redux";
 import Cart from "../pages/Cart";
+import ProtectedRoute from "./ProtectedRoute";
+import Shipping from "../pages/Shipping";
 
 function App() {
   const [addToCartProducts, setAddToCartProducts] = useState([]);
@@ -48,6 +55,15 @@ function App() {
         <Route path="/user/login" element={<LoginPage />} />
         <Route path="/user/register" element={<SignupPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/user/shipping"
+          element={
+            <ProtectedRoute>
+              <Shipping />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/products" element={<AdminProductsPage />} />
         <Route path="/admin/products/new" element={<AdminNewProductPage />} />

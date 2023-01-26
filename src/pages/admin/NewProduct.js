@@ -104,7 +104,6 @@ export const NewProduct = () => {
                 type="number"
                 placeholder="Price"
                 required
-                value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
@@ -127,14 +126,13 @@ export const NewProduct = () => {
                 type="number"
                 placeholder="stock"
                 required
-                value={stock}
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
             <div>
               <StorageIcon />
               <input
-                type="number"
+                type="text"
                 placeholder="chain"
                 required
                 value={chain}
@@ -144,7 +142,7 @@ export const NewProduct = () => {
             <div>
               <StorageIcon />
               <input
-                type="number"
+                type="text"
                 placeholder="Collection Name"
                 required
                 value={collectionName}
@@ -154,7 +152,7 @@ export const NewProduct = () => {
             <div>
               <StorageIcon />
               <input
-                type="number"
+                type="text"
                 placeholder="creator"
                 required
                 value={creator}

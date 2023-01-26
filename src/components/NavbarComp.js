@@ -8,12 +8,18 @@ import "../styles/navbar.scss";
 
 function NavbarComp({ addToCartCount }) {
   const { isAuthenticated, user } = useSelector((state) => state.user);
+  const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const logoutUser = () => {
     dispatch(logout());
     toast.success("logout successfull");
   };
+
+  let cartQty = 0;
+  for (let i = 0; i < cartItems.length; i++) {
+    cartQty += cartItems[i].quantity;
+  }
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
@@ -60,7 +66,7 @@ function NavbarComp({ addToCartCount }) {
             src="https://cdn-icons-png.flaticon.com/512/9374/9374328.png"
             alt="cart-icon"
           />
-          <span style={styles.cartCount}> {addToCartCount} </span>
+          <span style={styles.cartCount}> {cartQty} </span>
         </Link>
       </Container>
     </Navbar>

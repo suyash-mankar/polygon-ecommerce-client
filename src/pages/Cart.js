@@ -33,7 +33,7 @@ function Cart() {
   };
 
   const checkoutHandler = () => {
-    navigate("/login?redirect=shipping");
+    navigate("/user/login?redirect=shipping");
   };
 
   return (
@@ -41,7 +41,7 @@ function Cart() {
       {cartItems.length === 0 ? (
         <div className="emptyCart">
           <p>No Product in Your Cart</p>
-          <Link to="/products">View Products</Link>
+          <Link to="/">View Products</Link>
         </div>
       ) : (
         <>
@@ -92,7 +92,6 @@ function Cart() {
                   0
                 )}`}</p>
               </div>
-              <div></div>
               <div className="checkOutBtn">
                 <button onClick={checkoutHandler}>Check Out</button>
               </div>

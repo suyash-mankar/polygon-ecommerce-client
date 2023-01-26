@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login } from "../actions/userAction";
 import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ function LoginPage() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -22,6 +23,10 @@ function LoginPage() {
     dispatch(login(email, password));
   };
 
+  const redirectLink = location.search ? `/user/${location.search.split("=")[1]}` : "/";
+
+  console.log(redirectLink);
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -29,9 +34,9 @@ function LoginPage() {
     }
 
     if (isAuthenticated) {
-      navigate("/");
+      navigate(redirectLink);
     }
-  }, [dispatch, error, isAuthenticated]);
+  }, [dispatch, error, isAuthenticated, redirectLink]);
 
   return (
     <div>

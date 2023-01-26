@@ -3,10 +3,6 @@ import {
   Home,
   LoginPage,
   SignupPage,
-  Admin,
-  AdminOrdersPage,
-  AdminProductsPage,
-  AdminNewProductPage,
   ProductDetails,
   ConfirmOrder,
 } from "../pages";
@@ -27,6 +23,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "../pages/OrderSuccess";
 import Dashboard from "../pages/admin/Dashboard";
 import ProductList from "../pages/admin/ProductList";
+import { NewProduct } from "../pages/admin/NewProduct";
 
 function App() {
   const [addToCartProducts, setAddToCartProducts] = useState([]);
@@ -124,10 +121,14 @@ function App() {
           }
         />
 
-        {/* <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/products" element={<AdminProductsPage />} />
-        <Route path="/admin/products/new" element={<AdminNewProductPage />} />
-        <Route path="/admin/orders" element={<AdminOrdersPage />} /> */}
+        <Route
+          path="/admin/product"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <NewProduct />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

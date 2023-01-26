@@ -86,7 +86,7 @@ function ProductList() {
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/product/${params.getValue(params.id, "id")}`}>
+            <Link to={`/product/admin/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
 

@@ -8,6 +8,7 @@ import {
   CardExpiryElement,
   useStripe,
   useElements,
+  CardElement,
 } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 
@@ -84,10 +85,10 @@ function Payment() {
 
       if (result.error) {
         payBtn.current.disabled = false;
-
         toast.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
+          toast.success("Payment successfully made");
           order.paymentInfo = {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
@@ -116,6 +117,7 @@ function Payment() {
   return (
     <Fragment>
       <CheckoutSteps activeStep={2} />
+
       <div className="paymentContainer">
         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
           <Typography>Card Info</Typography>

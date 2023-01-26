@@ -24,6 +24,7 @@ import axios from "axios";
 import Payment from "../pages/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccess from "../pages/OrderSuccess";
 
 function App() {
   const [addToCartProducts, setAddToCartProducts] = useState([]);
@@ -91,6 +92,15 @@ function App() {
                 </ProtectedRoute>
               </Elements>
             )
+          }
+        />
+
+        <Route
+          path="/success"
+          element={
+            <ProtectedRoute>
+              <OrderSuccess />
+            </ProtectedRoute>
           }
         />
 

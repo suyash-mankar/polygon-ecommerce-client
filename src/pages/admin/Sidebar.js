@@ -17,10 +17,12 @@ function Sidebar() {
           <DashboardIcon /> Dashboard
         </p>
       </Link>
-      <Link>
-        <Link to="/admin/products"></Link>
 
-        <Link to="/admin/product"></Link>
+      <Link to="/admin/products">
+        <p>
+          <ListAltIcon />
+          Products
+        </p>
       </Link>
       <Link to="/admin/orders">
         <p>

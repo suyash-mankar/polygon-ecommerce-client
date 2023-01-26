@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "../styles/adminNewProductPage.scss";
-import { urls } from "../services/urls";
-import { createProduct } from "../services/apis";
 import { useNavigate } from "react-router-dom";
 
 function AdminNewProductPage() {

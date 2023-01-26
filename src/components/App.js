@@ -25,6 +25,8 @@ import Payment from "../pages/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "../pages/OrderSuccess";
+import Dashboard from "../pages/admin/Dashboard";
+import ProductList from "../pages/admin/ProductList";
 
 function App() {
   const [addToCartProducts, setAddToCartProducts] = useState([]);
@@ -104,10 +106,28 @@ function App() {
           }
         />
 
-        <Route path="/admin" element={<Admin />} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/products"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <ProductList />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* <Route path="/admin" element={<Admin />} />
         <Route path="/admin/products" element={<AdminProductsPage />} />
         <Route path="/admin/products/new" element={<AdminNewProductPage />} />
-        <Route path="/admin/orders" element={<AdminOrdersPage />} />
+        <Route path="/admin/orders" element={<AdminOrdersPage />} /> */}
       </Routes>
     </Router>
   );

@@ -54,7 +54,7 @@ function NavbarComp({ addToCartCount }) {
           )}
 
           {user?.role === "admin" && (
-            <Link to="/dashboard" className="link">
+            <Link to="/admin/dashboard" className="link">
               Admin Dashboard
             </Link>
           )}

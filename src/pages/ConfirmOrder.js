@@ -34,7 +34,7 @@ function ConfirmOrder() {
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
-    navigate("/process/payment");
+    navigate("/payment/process");
   };
 
   return (

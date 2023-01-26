@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   Home,
   LoginPage,
@@ -25,20 +20,32 @@ import { useSelector } from "react-redux";
 import Cart from "../pages/Cart";
 import ProtectedRoute from "./ProtectedRoute";
 import Shipping from "../pages/Shipping";
+import axios from "axios";
+import Payment from "../pages/Payment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 function App() {
   const [addToCartProducts, setAddToCartProducts] = useState([]);
   const [addToCartCount, setAddToCartCount] = useState(0);
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/payment/stripeapikey");
+    setStripeApiKey(data.stripeApiKey);
+  }
 
   useEffect(() => {
     store.dispatch(loadUser());
+    getStripeApiKey();
   }, []);
 
   return (
     <Router>
       <NavbarComp addToCartCount={addToCartCount} />
+
       <Routes>
         <Route
           path="/"
@@ -71,6 +78,19 @@ function App() {
             <ProtectedRoute>
               <ConfirmOrder />
             </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/payment/process"
+          element={
+            stripeApiKey && (
+              <Elements stripe={loadStripe(stripeApiKey)}>
+                <ProtectedRoute>
+                  <Payment />
+                </ProtectedRoute>
+              </Elements>
+            )
           }
         />
 

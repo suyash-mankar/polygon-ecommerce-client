@@ -1,13 +1,33 @@
 .home_container {
   background-color: #0b1426;
+  display: flex;
+
+  .filters_container{
+    width: 30%;
+    border: 1px solid white;
+    padding: 50px;
+    color: white;
+
+    .search_filter{
+      margin-top: 30px;
+
+      input{
+        border-radius: 5px;
+        font-size: 1.2rem;
+        outline: none;
+        padding: 8px 20px;
+      }
+    }
+  }
 
   .all_products_container {
+    margin-left: 50px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
     padding: 50px;
-    width: 100%;
 
     .product_card {
       width: 18vw;

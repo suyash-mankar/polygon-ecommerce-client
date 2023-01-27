@@ -5,10 +5,10 @@ import "../styles/cartItemCard.scss";
 function CartItemCard({ item, deleteCartItems }) {
   return (
     <div className="CartItemCard">
-      <img src={item.image} alt="ssa" />
+      <img src={item.image} alt="product" />
       <div>
-        <Link to={`/product/${item.product}`}>{item.name}</Link>
-        <span>{`Price: $  ${item.price}`}</span>
+        <Link to={`/product/${item.product}`}>{item.title}</Link>
+        <span>{`Price: $${item.price}`}</span>
         <p onClick={() => deleteCartItems(item.product)}>Remove</p>
       </div>
     </div>

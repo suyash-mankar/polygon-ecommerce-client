@@ -29,17 +29,20 @@
 }
 
 .cartPage {
-  padding: 5vmax;
+  padding: 2vw;
 
   .cartHeader {
-    background-color: tomato;
+    background-color: #0b1426;
     width: 90%;
     box-sizing: border-box;
     margin: auto;
     color: white;
     display: grid;
     grid-template-columns: 4fr 1fr 1fr;
-    font: 300 0.7vmax "Roboto";
+    font-size: 1.2rem;
+    padding: 0 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 
     p {
       margin: 10px;
@@ -59,28 +62,29 @@
     .cartInput {
       display: flex;
       align-items: center;
-      height: 8vmax;
+      height: auto;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
       button {
         border: none;
-        background-color: rgba(0, 0, 0, 0.616);
-        padding: 0.5vmax;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 0.5vw 1vw;
         cursor: pointer;
         color: white;
         transition: all 0.5s;
       }
 
       button:hover {
-        background-color: rgba(0, 0, 0, 0.767);
+        background-color: rgba(0, 0, 0, 1);
       }
 
       input {
         border: none;
         padding: 0.5vmax;
-        width: 7vmax;
+        width: 4vmax;
         text-align: center;
         outline: none;
-        font: 400 0.8vmax "Roboto";
+        font-size: 1.2rem;
         color: rgba(0, 0, 0, 0.74);
       }
     }
@@ -88,43 +92,45 @@
     .cartSubtotal {
       display: flex;
       padding: 0.5vmax;
-      height: 8vmax;
+      height: auto;
       align-items: center;
       box-sizing: border-box;
-      font: 300 1vmax cursive;
+      font-size: 1.2rem;
       justify-content: flex-end;
       color: rgba(0, 0, 0, 0.753);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      margin-bottom: 0;
+      font-weight: 500;
     }
   }
 
   .cartGrossProfit {
-    display: grid;
-    grid-template-columns: 2fr 1.2fr;
+    // display: grid;
+    // grid-template-columns: 2fr 1.2fr;
+    width: 50%;
+    margin-left: auto;
 
     .cartGrossProfitBox {
-      border-top: 3px solid tomato;
+      border-bottom: 3px solid tomato;
       margin: 1vmax 4vmax;
       box-sizing: border-box;
       padding: 2vmax 0;
-      font: 300 1vmax "Roboto";
+      font-size: 1.5rem;
       display: flex;
       justify-content: space-between;
+      font-weight: 700;
     }
 
     .checkOutBtn {
       display: flex;
       justify-content: flex-end;
 
-      button {
-        background-color: tomato;
-        color: white;
-        border: none;
+      .proceed_checkout_btn {
         padding: 0.8vmax 4vmax;
-        width: 50%;
-        font: 300 0.8vmax "Roboto";
+        width: 100%;
+        font-size: 1.2rem;
         margin: 1vmax 4vmax;
-        cursor: pointer;
-        border-radius: 30px;
+        font-weight: 500;
       }
     }
   }

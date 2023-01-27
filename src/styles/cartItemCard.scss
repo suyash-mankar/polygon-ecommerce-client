@@ -1,32 +1,40 @@
 .CartItemCard {
   display: flex;
   padding: 1vmax;
-  height: 8vmax;
+  height: auto;
   align-items: flex-start;
   box-sizing: border-box;
+  position: relative;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 
   img {
-    width: 5vmax;
+    width: 10vw;
   }
 
   div {
     display: flex;
     margin: 0.3vmax 1vmax;
     flex-direction: column;
+    ;
     a {
-      font: 300 0.9vmax cursive;
+      font-size:1.2rem;
+      font-weight: 500;
       color: rgba(24, 24, 24, 0.815);
       text-decoration: none;
     }
     span {
-      font: 300 0.9vmax "Roboto";
+      font-size: 1rem;
       color: rgba(24, 24, 24, 0.815);
+      margin: 10px 0;
     }
 
     p {
-      color: tomato;
-      font: 100 0.8vmax "Roboto";
+      color: red;
+      font-size: 1rem;
       cursor: pointer;
+      text-decoration: underline;
+      position: absolute;
+      bottom: 10px;
     }
   }
 }

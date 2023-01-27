@@ -5,6 +5,7 @@ import { addItemsToCart, removeItemsFromCart } from "../actions/cartAction";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CartItemCard from "./CartItemCard";
+import { Button } from "react-bootstrap";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -82,7 +83,7 @@ function Cart() {
                       +
                     </button>
                   </div>
-                  <p className="cartSubtotal">{`₹${
+                  <p className="cartSubtotal">{`$${
                     item.price * item.quantity
                   }`}</p>
                 </div>
@@ -98,7 +99,13 @@ function Cart() {
                 )}`}</p>
               </div>
               <div className="checkOutBtn">
-                <button onClick={checkoutHandler}>Check Out</button>
+                <Button
+                  variant="success"
+                  className="proceed_checkout_btn"
+                  onClick={checkoutHandler}
+                >
+                  Proceed to Check Out
+                </Button>
               </div>
             </div>
           </div>

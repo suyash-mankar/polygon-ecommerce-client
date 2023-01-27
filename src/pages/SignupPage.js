@@ -1,10 +1,11 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, register } from "../actions/userAction";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
+import "../styles/signupPage.scss";
 
 function SignupPage() {
   const [name, setName] = useState("");
@@ -35,11 +36,13 @@ function SignupPage() {
   }, [dispatch, error, isAuthenticated]);
 
   return (
-    <div>
+    <div className="signup_page_container">
       {loading ? (
         <Loader />
       ) : (
-        <Form onSubmit={handleFormSubmit}>
+        <Form onSubmit={handleFormSubmit} className="signup_form">
+          <h1 style={{ marginBottom: "40px" }}>SignUp</h1>
+
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Name</Form.Label>
             <Form.Control
@@ -48,7 +51,6 @@ function SignupPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-           
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">

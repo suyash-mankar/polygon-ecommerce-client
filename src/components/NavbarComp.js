@@ -27,7 +27,7 @@ function NavbarComp() {
         <Link to="/" className="logoLink">
           <Navbar.Brand style={{ fontSize: "1.5rem", fontFamily: "monospace" }}>
             <img
-              src="https://seeklogo.com/images/G/google-issue-tracker-logo-2D1EE93213-seeklogo.com.png"
+              src="https://cdn-icons-png.flaticon.com/512/7747/7747255.png"
               alt="brandLogo"
               className="logo"
             />

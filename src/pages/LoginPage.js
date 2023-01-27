@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login } from "../actions/userAction";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
+import "../styles/loginPage.scss";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,9 @@ function LoginPage() {
     dispatch(login(email, password));
   };
 
-  const redirectLink = location.search ? `/user/${location.search.split("=")[1]}` : "/";
+  const redirectLink = location.search
+    ? `/user/${location.search.split("=")[1]}`
+    : "/";
 
   useEffect(() => {
     if (error) {
@@ -37,11 +40,12 @@ function LoginPage() {
   }, [dispatch, error, isAuthenticated, redirectLink]);
 
   return (
-    <div>
+    <div className="signin_page_container">
       {loading ? (
         <Loader />
       ) : (
-        <Form onSubmit={handleFormSubmit}>
+        <Form onSubmit={handleFormSubmit} className="signup_form">
+          <h1 style={{ marginBottom: "40px" }}>SignIn</h1>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control

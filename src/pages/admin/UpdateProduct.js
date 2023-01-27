@@ -1,47 +1,78 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "../../styles/admin/newProduct.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, createProduct } from "../../actions/productAction";
+import {
+  clearErrors,
+  updateProduct,
+  getProductDetails,
+} from "../../actions/productAction";
 import { Button } from "@mui/material";
 import DescriptionIcon from "@mui/icons-material/Description";
 import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import SideBar from "./Sidebar";
-import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
+import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const NewProduct = () => {
+const UpdateProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  let { id } = useParams();
 
-  const { loading, error, success } = useSelector((state) => state.newProduct);
+  console.log(id);
+
+  const { error, product } = useSelector((state) => state.productDetails);
+
+  const {
+    loading,
+    error: updateError,
+    isUpdated,
+  } = useSelector((state) => state.product);
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [stock, setStock] = useState(0);
   const [image, setImage] = useState();
+  const [oldImage, setOldImage] = useState();
   const [creator, setCreator] = useState("");
   const [collectionName, setCollectionName] = useState("");
   const [chain, setChain] = useState("");
   const [imagePreview, setImagePreview] = useState();
 
   useEffect(() => {
+    if (product && product._id !== id) {
+      dispatch(getProductDetails(id));
+    } else {
+      setTitle(product.title);
+      setPrice(product.price);
+      setDescription(product.description);
+      setStock(product.stock);
+      setCreator(product.creator);
+      setCollectionName(product.collectionName);
+      setOldImage(product.image);
+    }
+
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
     }
 
-    if (success) {
-      toast.success("Product Created Successfully");
-      navigate("/admin/dashboard");
-      dispatch({ type: NEW_PRODUCT_RESET });
+    if (updateError) {
+      toast.error(updateError);
+      dispatch(clearErrors());
     }
-  }, [dispatch, error, success]);
 
-  const createProductSubmitHandler = (e) => {
+    if (isUpdated) {
+      toast.success("Product Updated Successfully");
+      navigate("/admin/products");
+      dispatch({ type: UPDATE_PRODUCT_RESET });
+    }
+  }, [dispatch, error, isUpdated, id, product, updateError]);
+
+  const updateProductSubmitHandler = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
@@ -55,10 +86,10 @@ export const NewProduct = () => {
     myForm.set("chain", chain);
     myForm.append("image", image);
 
-    dispatch(createProduct(myForm));
+    dispatch(updateProduct(id, myForm));
   };
 
-  const createProductImageChange = (e) => {
+  const updateProductImageChange = (e) => {
     const file = e.target.files[0];
 
     setImage();
@@ -84,9 +115,9 @@ export const NewProduct = () => {
           <form
             className="createProductForm"
             encType="multipart/form-data"
-            onSubmit={createProductSubmitHandler}
+            onSubmit={updateProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Update Product</h1>
 
             <div>
               <SpellcheckIcon />
@@ -165,7 +196,7 @@ export const NewProduct = () => {
                 type="file"
                 name="avatar"
                 accept="image/*"
-                onChange={createProductImageChange}
+                onChange={updateProductImageChange}
               />
             </div>
 
@@ -186,3 +217,5 @@ export const NewProduct = () => {
     </Fragment>
   );
 };
+
+export default UpdateProduct;

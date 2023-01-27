@@ -2,21 +2,30 @@
   background-color: #0b1426;
   display: flex;
 
-  .filters_container{
+  .filters_container {
     width: 30%;
-    border: 1px solid white;
+    border-right: 1px solid whitesmoke;
     padding: 50px;
     color: white;
 
-    .search_filter{
-      margin-top: 30px;
+    .search_filter {
+      margin: 30px 0;
 
-      input{
+      input {
         border-radius: 5px;
         font-size: 1.2rem;
         outline: none;
-        padding: 8px 20px;
+        padding: 5px 20px;
+        width: 100%;
       }
+    }
+
+    .collection_filter {
+      margin: 30px 0;
+    }
+
+    .blockchain_filter {
+      margin: 30px 0;
     }
   }
 

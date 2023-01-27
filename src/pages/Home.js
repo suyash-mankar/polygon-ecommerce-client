@@ -8,9 +8,9 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { addItemsToCart } from "../actions/cartAction";
+import Filters from "../components/Filters";
 
 function Home() {
-  // const [searchText, setSearchText] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const dispatch = useDispatch();
@@ -33,38 +33,17 @@ function Home() {
     toast.success("Item added to cart");
   };
 
-  useEffect(() => {
-    setFilteredProducts(products);
-  }, [products]);
-
-  const handleSearchFilter = (e) => {
-    const searchWord = e.target.value;
-    if (searchWord === "") {
-      setFilteredProducts(products);
-    }
-    const searchedProducts = products.filter((product) => {
-      return product.title.toLowerCase().includes(searchWord.toLowerCase());
-    });
-    setFilteredProducts(searchedProducts);
-  };
-
   return (
     <div className="home_container">
       {loading ? (
         <Loader />
       ) : (
         <>
-          <div className="filters_container">
-            <h3>Filters:</h3>
-            <div className="search_filter">
-              <p>search by Product Title:</p>
-              <input
-                type="text"
-                onChange={handleSearchFilter}
-                placeholder="Enter Product Title"
-              />
-            </div>
-          </div>
+          <Filters
+            products={products}
+            filteredProducts={filteredProducts}
+            setFilteredProducts={setFilteredProducts}
+          />
 
           <div
             className="all_products_container"

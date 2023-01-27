@@ -1,3 +1,7 @@
+.checkout_steps_container {
+  margin-top: 50px;
+}
+
 .paymentContainer {
   display: grid;
   place-items: center;
@@ -7,12 +11,16 @@
 }
 
 .paymentForm {
-  width: 22%;
-  height: 100%;
+  width: 30%;
+  height: auto;
+  border: 1px solid lightgrey;
+  padding: 3% 3%;
+
+
 }
 
 .paymentForm > p {
-  font: 400 2vmax "Roboto";
+  font-size: 1rem;
   color: rgba(0, 0, 0, 0.753);
   border-bottom: 1px solid rgba(0, 0, 0, 0.13);
   padding: 1vmax 0;
@@ -46,18 +54,19 @@
 
 .paymentFormBtn {
   border: none;
-  background-color: tomato;
+  background-color: #0b5ed7;
   color: white;
-  font: 300 0.9vmax "Roboto";
+  font-size: 1.2rem;
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
   transition: all 0.5s;
   outline: none;
+  border-radius: 5px;
 }
 
 .paymentFormBtn:hover {
-  background-color: rgb(179, 66, 46);
+  background-color: #0b47a1;
 }
 
 @media screen and (max-width: 600px) {
@@ -66,7 +75,7 @@
   }
 
   .paymentForm > p {
-    font: 400 8vw "Roboto";
+    font-size: 1rem;
     padding: 4vw 0;
     width: 60%;
   }
@@ -84,7 +93,7 @@
   }
 
   .paymentFormBtn {
-    font: 300 4vw "Roboto";
+    font-size: 1rem;
     padding: 4vw;
   }
 }

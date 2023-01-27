@@ -115,12 +115,14 @@ function Payment() {
   }, [dispatch, error]);
 
   return (
-    <Fragment>
-      <CheckoutSteps activeStep={2} />
+    <Fragment >
+      <div className="checkout_steps_container">
+        <CheckoutSteps activeStep={2} />
+      </div>
 
       <div className="paymentContainer">
         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-          <Typography>Card Info</Typography>
+          <h3 style={{textAlign: "center", marginTop: "0px"}}>Card Info</h3>
           <div>
             <CreditCardIcon />
             <CardNumberElement className="paymentInput" />
@@ -136,7 +138,7 @@ function Payment() {
 
           <input
             type="submit"
-            value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
+            value={`Pay - $${orderInfo && orderInfo.totalPrice}`}
             ref={payBtn}
             className="paymentFormBtn"
           />

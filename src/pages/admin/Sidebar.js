@@ -3,7 +3,6 @@ import "../../styles/admin/sidebar.scss";
 import { Link } from "react-router-dom";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import PeopleIcon from "@mui/icons-material/People";
 import { TreeItem, TreeView } from "@mui/lab";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PostAddIcon from "@mui/icons-material/PostAdd";
@@ -23,6 +22,7 @@ function Sidebar() {
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ImportExportIcon />}
+          className="products_tree"
         >
           <TreeItem nodeId="1" label="Products">
             <Link to="/admin/products">

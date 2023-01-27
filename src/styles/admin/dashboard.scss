@@ -10,11 +10,12 @@
   border-left: 1px solid rgba(0, 0, 0, 0.13);
   background-color: rgb(255, 255, 255);
   padding: 3rem 0;
+  height: 88.5vh;
 }
 
 .dashboardContainer > h1 {
-  color: rgba(0, 0, 0, 0.733);
-  font: 300 2rem "Roboto";
+  color: rgba(0, 0, 0, 1);
+  font-size: 2rem;
   text-align: center;
   width: 50%;
   padding: 1.5rem;
@@ -33,27 +34,33 @@
 .dashboardSummary > div > p {
   background-color: rgba(70, 117, 218, 0.932);
   color: white;
-  font: 300 1.3rem "Roboto";
+  font-size: 1.5rem;
   text-align: center;
   padding: 1.5rem;
-  width: 100%;
+  width: 80%;
   margin: 0 2rem;
+  border-radius: 5px;
+  font-weight: 500;
 }
 .dashboardSummaryBox2 > a {
-  color: rgb(0, 0, 0);
-  font: 300 2rem "Roboto";
+  color: white;
+  font-size: 2rem;
   text-align: center;
-  background-color: rgb(255, 233, 174);
+  background-color: #198754;
   text-decoration: none;
   padding: 1.5rem;
   width: 10vmax;
   height: 10vmax;
   margin: 2rem;
-  border-radius: 100%;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.dashboardSummaryBox2 > a:hover {
+  color: white;
 }
 
 .dashboardSummaryBox2 > a:first-child {

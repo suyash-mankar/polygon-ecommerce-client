@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
+import { addItemsToCart } from "../actions/cartAction";
 
 function Home() {
   const dispatch = useDispatch();
@@ -24,9 +25,9 @@ function Home() {
     dispatch(getProduct(keyword));
   }, [dispatch]);
 
-  const handleAddToCart = (product) => {
-    // setAddToCartProducts([...addToCartProducts, product]);
-    // setAddToCartCount(addToCartCount + 1);
+  const addToCartHandler = (id) => {
+    dispatch(addItemsToCart(id, 1));
+    toast.success("Item added to cart");
   };
 
   return (
@@ -50,17 +51,29 @@ function Home() {
                   />
 
                   <div className="product_details">
-                    <p>collection: {product.name}</p>
-                    <p>{product.name}</p>
-                    <p>Price: ${product.price}</p>
-                    <Button
+                    <p className="collection_name">
+                      {product.collectionName}
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/7641/7641727.png"
+                        alt="verified-icon"
+                        style={{ width: "20px", marginLeft: "5px" }}
+                      />
+                    </p>
+                    <p className="product_title">{product.title}</p>
+                    <p className="product_price">
+                      <span>Price:</span> ${product.price}
+                    </p>
+                    <p className="product_chain">
+                      <span>Chain:</span> {product.chain}
+                    </p>
+                    {/* <Button
                       variant="primary"
                       onClick={() => {
-                        handleAddToCart(product);
+                        addToCartHandler(product._id);
                       }}
                     >
                       Add to cart
-                    </Button>
+                    </Button> */}
                   </div>
                 </Link>
               );

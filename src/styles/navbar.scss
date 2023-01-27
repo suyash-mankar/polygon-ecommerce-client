@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   .logoLink {
     text-decoration: none;
@@ -14,7 +15,9 @@
   }
 
   .logo_links_container {
-    text-align: end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
     .link {
       margin-right: 30px;

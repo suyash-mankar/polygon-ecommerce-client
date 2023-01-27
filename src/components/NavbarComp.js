@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { logout } from "../actions/userAction";
 import "../styles/navbar.scss";
 
-function NavbarComp({ addToCartCount }) {
+function NavbarComp() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function NavbarComp({ addToCartCount }) {
   }
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
       <Container className="outer_nav_container">
         <Link to="/" className="logoLink">
           <Navbar.Brand style={{ fontSize: "1.5rem", fontFamily: "monospace" }}>
@@ -47,16 +47,16 @@ function NavbarComp({ addToCartCount }) {
             </Link>
           )}
 
-          {isAuthenticated && (
-            <p className="link" onClick={logoutUser}>
-              LogOut
-            </p>
-          )}
-
           {user?.role === "admin" && (
             <Link to="/admin/dashboard" className="link">
               Admin Dashboard
             </Link>
+          )}
+
+          {isAuthenticated && (
+            <div className="link" onClick={logoutUser}>
+              LogOut
+            </div>
           )}
         </Container>
 

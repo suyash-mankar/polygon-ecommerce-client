@@ -12,6 +12,7 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import PhoneIcon from "@mui/icons-material/Phone";
 import TransferWithinAStationIcon from "@mui/icons-material/TransferWithinAStation";
 import { toast } from "react-toastify";
+import { Button } from "react-bootstrap";
 
 const Shipping = () => {
   const dispatch = useDispatch();
@@ -41,7 +42,9 @@ const Shipping = () => {
 
   return (
     <Fragment>
-      <CheckoutSteps activeStep={0} />
+      <div className="checkout_steps_container">
+        <CheckoutSteps activeStep={0} />
+      </div>
 
       <div className="shippingContainer">
         <div className="shippingBox">

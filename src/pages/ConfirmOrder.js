@@ -39,7 +39,9 @@ function ConfirmOrder() {
 
   return (
     <Fragment>
-      <CheckoutSteps activeStep={1} />
+      <div className="checkout_steps_container">
+        <CheckoutSteps activeStep={1} />
+      </div>
       <div className="confirmOrderPage">
         <div>
           <div className="confirmshippingArea">
@@ -67,11 +69,11 @@ function ConfirmOrder() {
                   <div key={item.product}>
                     <img src={item.image} alt="Product" />
                     <Link to={`/product/${item.product}`}>
-                      {item.name}
+                      {item.title}
                     </Link>{" "}
                     <span>
                       {item.quantity} X ₹{item.price} ={" "}
-                      <b>₹{item.price * item.quantity}</b>
+                      <b>${item.price * item.quantity}</b>
                     </span>
                   </div>
                 ))}
@@ -85,15 +87,15 @@ function ConfirmOrder() {
             <div>
               <div>
                 <p>Subtotal:</p>
-                <span>₹{subtotal}</span>
+                <span>${subtotal}</span>
               </div>
               <div>
                 <p>Shipping Charges:</p>
-                <span>₹{shippingCharges}</span>
+                <span>${shippingCharges}</span>
               </div>
               <div>
                 <p>GST:</p>
-                <span>₹{tax}</span>
+                <span>${tax}</span>
               </div>
             </div>
 
@@ -101,7 +103,7 @@ function ConfirmOrder() {
               <p>
                 <b>Total:</b>
               </p>
-              <span>₹{totalPrice}</span>
+              <span>${totalPrice}</span>
             </div>
 
             <button onClick={proceedToPayment}>Proceed To Payment</button>

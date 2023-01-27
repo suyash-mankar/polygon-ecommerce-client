@@ -1,3 +1,7 @@
+.checkout_steps_container {
+  margin-top: 50px;
+}
+
 .confirmOrderPage {
   height: 100vh;
   background-color: white;
@@ -15,7 +19,7 @@
 }
 
 .confirmshippingArea > p {
-  font: 400 1.8vmax "Roboto";
+  font-size: 2rem;
 }
 
 .confirmshippingAreaBox,
@@ -29,17 +33,17 @@
 }
 
 .confirmshippingAreaBox > div > p {
-  font: 400 1vmax "Roboto";
+  font-size: 1rem;
   color: black;
 }
 .confirmshippingAreaBox > div > span {
   margin: 0 1vmax;
-  font: 100 1vmax "Roboto";
+  font-size: 1rem;
   color: #575757;
 }
 
 .confirmCartItems > p {
-  font: 400 1.8vmax "Roboto";
+  font-size: 1rem;
 }
 
 .confirmCartItems {
@@ -54,7 +58,7 @@
 
 .confirmCartItemsContainer > div {
   display: flex;
-  font: 400 1vmax "Roboto";
+  font-size: 1rem;
   align-items: center;
   justify-content: space-between;
   margin: 2vmax 0;
@@ -72,7 +76,7 @@
 }
 
 .confirmCartItemsContainer > div > span {
-  font: 100 1vmax "Roboto";
+  font-size: 1rem;
   color: #5e5e5e;
 }
 
@@ -82,7 +86,7 @@
 
 .orderSummary > p {
   text-align: center;
-  font: 400 1.8vmax "Roboto";
+  font-size: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.267);
   padding: 1vmax;
   width: 100%;
@@ -92,7 +96,7 @@
 
 .orderSummary > div > div {
   display: flex;
-  font: 300 1vmax "Roboto";
+  font-size: 1rem;
   justify-content: space-between;
   margin: 2vmax 0;
 }
@@ -102,14 +106,14 @@
 
 .orderSummaryTotal {
   display: flex;
-  font: 300 1vmax "Roboto";
+  font-size: 1rem;
   justify-content: space-between;
   border-top: 1px solid rgba(0, 0, 0, 0.363);
   padding: 2vmax 0;
 }
 
 .orderSummary > button {
-  background-color: tomato;
+  background-color: #0b5ed7;
   color: white;
   width: 100%;
   padding: 1vmax;
@@ -117,11 +121,13 @@
   margin: auto;
   cursor: pointer;
   transition: 0.5s;
-  font: 400 1vmax "Roboto";
+  font-size: 1.1rem;
+  border-radius: 5px;
+
 }
 
 .orderSummary > button:hover {
-  background-color: rgb(192, 71, 50);
+  background-color: #0b47a1;
 }
 
 @media screen and (max-width: 600px) {
@@ -136,7 +142,7 @@
   }
 
   .confirmshippingArea > p {
-    font: 400 6vw "Roboto";
+    font-size: 1rem;
   }
 
   .confirmshippingAreaBox > div {
@@ -145,14 +151,14 @@
   }
 
   .confirmshippingAreaBox > div > p {
-    font: 400 4vw "Roboto";
+    font-size: 1rem;
   }
   .confirmshippingAreaBox > div > span {
-    font: 100 4vw "Roboto";
+    font-size: 1rem;
   }
 
   .confirmCartItems > p {
-    font: 400 6vw "Roboto";
+    font-size: 1rem;
   }
 
   .confirmCartItemsContainer {
@@ -160,7 +166,7 @@
   }
 
   .confirmCartItemsContainer > div {
-    font: 400 4vw "Roboto";
+    font-size: 1rem;
     margin: 4vw 0;
   }
 
@@ -174,7 +180,7 @@
   }
 
   .confirmCartItemsContainer > div > span {
-    font: 100 4vw "Roboto";
+    font-size: 1rem;
   }
 
   .orderSummary {
@@ -182,22 +188,22 @@
   }
 
   .orderSummary > p {
-    font: 400 6vw "Roboto";
+    font-size: 1rem;
     padding: 4vw;
   }
 
   .orderSummary > div > div {
-    font: 300 4vw "Roboto";
+    font-size: 1rem;
   }
 
   .orderSummaryTotal {
-    font: 300 4vw "Roboto";
+    font-size: 1rem;
     padding: 5vw 0;
   }
 
   .orderSummary > button {
     padding: 4vw;
     margin: 4vw auto;
-    font: 400 4vw "Roboto";
+    font-size: 1rem;
   }
 }

@@ -1,3 +1,7 @@
+.checkout_steps_container{
+  margin-top: 50px;
+}
+
 .shippingContainer {
   width: 100vw;
   max-width: 100%;
@@ -17,11 +21,11 @@
 
 .shippingHeading {
   text-align: center;
-  color: rgba(0, 0, 0, 0.664);
-  font: 400 1.3vmax "Roboto";
+  color: rgba(0, 0, 0, 1);
+  font-size: 1.3rem;
   padding: 1.3vmax;
   border-bottom: 1px solid rgba(0, 0, 0, 0.205);
-  width: 50%;
+  width: 100%;
   margin: auto;
 }
 
@@ -50,7 +54,7 @@
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
   border-radius: 4px;
-  font: 300 0.9vmax cursive;
+  font-size: 1rem;
   outline: none;
 }
 
@@ -63,19 +67,20 @@
 
 .shippingBtn {
   border: none;
-  background-color: tomato;
+  background-color: #0b5ed7;
   color: white;
-  font: 300 1vmax "Roboto";
+  font-size: 1.2rem;
   width: 100%;
   padding: 1vmax;
   cursor: pointer;
   transition: all 0.5s;
   outline: none;
   margin: 2vmax;
+  border-radius: 5px;
 }
 
 .shippingBtn:hover {
-  background-color: rgb(179, 66, 46);
+  background-color: #0b47a1;
 }
 
 @media screen and (max-width: 600px) {

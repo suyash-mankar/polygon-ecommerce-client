@@ -66,14 +66,14 @@ function Home() {
                     <p className="product_chain">
                       <span>Chain:</span> {product.chain}
                     </p>
-                    {/* <Button
+                    <Button
                       variant="primary"
                       onClick={() => {
                         addToCartHandler(product._id);
                       }}
                     >
                       Add to cart
-                    </Button> */}
+                    </Button>
                   </div>
                 </Link>
               );

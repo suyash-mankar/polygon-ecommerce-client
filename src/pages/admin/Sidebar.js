@@ -41,11 +41,6 @@ function Sidebar() {
           Orders
         </p>
       </Link>
-      <Link to="/admin/users">
-        <p>
-          <PeopleIcon /> Users
-        </p>
-      </Link>
     </div>
   );
 }

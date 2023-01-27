@@ -40,7 +40,12 @@ function Cart() {
     <>
       {cartItems.length === 0 ? (
         <div className="emptyCart">
-          <p>No Product in Your Cart</p>
+          <p>No Products in Your Cart</p>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2037/2037457.png"
+            alt="empty-cart"
+            style={{ width: "100px", marginBottom: "40px" }}
+          />
           <Link to="/">View Products</Link>
         </div>
       ) : (

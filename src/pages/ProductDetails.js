@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import { toast } from "react-toastify";
 import "../styles/productDetails.scss";
 import { addItemsToCart } from "../actions/cartAction";
+import { Button } from "react-bootstrap";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -61,28 +62,84 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="product_details_container">
+          <div className="right_container">
+            <div className="collection_creator_container">
+              <p
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  fontWeight: "500",
+                }}
+              >
+                <span
+                  style={{
+                    color: "grey",
+                    fontWeight: "400",
+                    marginRight: "5px",
+                  }}
+                >
+                  Collection:
+                </span>
+                {product.collectionName}
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/7641/7641727.png"
+                  alt="verified-icon"
+                  style={{ width: "20px", marginLeft: "5px" }}
+                />
+              </p>
+              <p
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  fontWeight: "500",
+                }}
+              >
+                <span
+                  style={{
+                    color: "grey",
+                    fontWeight: "400",
+                    marginRight: "5px",
+                  }}
+                >
+                  Creator:
+                </span>
+                {product.creator}
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/7641/7641727.png"
+                  alt="verified-icon"
+                  style={{ width: "20px", marginLeft: "5px" }}
+                />
+              </p>
+            </div>
+
             <h2>{product.title}</h2>
             <p>{product.description}</p>
-            <p>price: ${product.price}</p>
-            <p>{product.creator}</p>
-            <p>{product.collectionName}</p>
-            <p>{product.chain}</p>
+            <p>
+              <span>Price:</span> ${product.price}
+            </p>
+            <p>
+              <span>Chain: </span> {product.chain}
+            </p>
 
             <div className="qty_btn_container">
-              <button onClick={decreaseQuantity}>-</button>
+              <p style={{ margin: "0px", fontWeight: "500" }}>Qty: </p>
+              <button style={{ marginLeft: "10px" }} onClick={decreaseQuantity}>
+                -
+              </button>
               <input readOnly type="number" value={quantity} />
               <button onClick={increaseQuantity}>+</button>
             </div>
-            <button
+
+            <Button
               disabled={product.stock < 1 ? true : false}
               onClick={addToCartHandler}
+              className="addtocart_btn"
             >
               Add to Cart
-            </button>
+            </Button>
 
-            <p>
-              Status:
+            <p className="stock_status">
+              <span>Status:</span>
               <b className={product.stock < 1 ? "redColor" : "greenColor"}>
                 {product.stock < 1 ? "OutOfStock" : "InStock"}
               </b>

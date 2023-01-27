@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { Typography, Button } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import SideBar from "./Sidebar";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
@@ -68,28 +69,34 @@ function ProcessOrder() {
             >
               <div>
                 <div className="confirmshippingArea">
-                  <Typography>Shipping Info</Typography>
+                  <h4 style={{ marginBottom: "20px" }}>Shipping Info</h4>
                   <div className="orderDetailsContainerBox">
-                    <div>
-                      <p>Name:</p>
-                      <span>{order.user && order.user.name}</span>
+                    <div style={{ display: "flex" }}>
+                      <p>
+                        Name: <span>{order.user && order.user.name}</span>
+                      </p>
                     </div>
-                    <div>
-                      <p>Phone:</p>
-                      <span>
-                        {order.shippingInfo && order.shippingInfo.phoneNo}
-                      </span>
+                    <div style={{ display: "flex" }}>
+                      <p>
+                        Phone:{" "}
+                        <span>
+                          {" "}
+                          {order.shippingInfo && order.shippingInfo.phoneNo}
+                        </span>
+                      </p>
                     </div>
-                    <div>
-                      <p>Address:</p>
-                      <span>
-                        {order.shippingInfo &&
-                          `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
-                      </span>
+                    <div style={{ display: "flex" }}>
+                      <p>
+                        Address:{" "}
+                        <span>
+                          {order.shippingInfo &&
+                            `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
+                        </span>
+                      </p>
                     </div>
                   </div>
 
-                  <Typography>Payment</Typography>
+                  <h4 style={{ marginBottom: "20px" }}>Payment</h4>
                   <div className="orderDetailsContainerBox">
                     <div>
                       <p
@@ -107,13 +114,15 @@ function ProcessOrder() {
                       </p>
                     </div>
 
-                    <div>
-                      <p>Amount:</p>
-                      <span>{order.totalPrice && order.totalPrice}</span>
+                    <div style={{ display: "flex" }}>
+                      <p>
+                        Amount:{" "}
+                        $<span>{order.totalPrice && order.totalPrice}</span>
+                      </p>
                     </div>
                   </div>
 
-                  <Typography>Order Status</Typography>
+                  <h4 style={{ marginBottom: "20px" }}>Order Status</h4>
                   <div className="orderDetailsContainerBox">
                     <div>
                       <p
@@ -129,17 +138,17 @@ function ProcessOrder() {
                   </div>
                 </div>
                 <div className="confirmCartItems">
-                  <Typography>Your Cart Items:</Typography>
+                  <h4 style={{ marginBottom: "20px" }}>Your Cart Items:</h4>
                   <div className="confirmCartItemsContainer">
                     {order.orderItems &&
                       order.orderItems.map((item) => (
                         <div key={item.product}>
                           <img src={item.image} alt="Product" />
-                          <Link to={`/product/${item.product}`}>
-                            {item.name}
-                          </Link>{" "}
+                          <Link to={`/products/${item.product}`}>
+                            {item.title}
+                          </Link>
                           <span>
-                            {item.quantity} X ₹{item.price} ={" "}
+                            {item.quantity} X ₹{item.price} =
                             <b>₹{item.price * item.quantity}</b>
                           </span>
                         </div>
@@ -147,7 +156,7 @@ function ProcessOrder() {
                   </div>
                 </div>
               </div>
-              {/*  */}
+
               <div
                 style={{
                   display: order.orderStatus === "Delivered" ? "none" : "block",
@@ -157,7 +166,7 @@ function ProcessOrder() {
                   className="updateOrderForm"
                   onSubmit={updateOrderSubmitHandler}
                 >
-                  <h1>Process Order</h1>
+                  <h1 style={{ fontSize: "1.3rem" }}>Process Order</h1>
 
                   <div>
                     <AccountTreeIcon />

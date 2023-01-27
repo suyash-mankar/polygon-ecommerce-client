@@ -10,13 +10,13 @@
   align-items: center;
 }
 .updateOrderForm > div > select {
-  padding: 1vmax 4vmax;
+  padding: 1vmax 3vmax;
   margin: 2rem 0;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
   border-radius: 4px;
-  font: 300 0.9vmax cursive;
+  font-size: 1rem;
   outline: none;
 }
 
@@ -40,4 +40,31 @@
   .updateOrderForm > div > svg {
     font-size: 2.8vmax;
   }
+}
+
+.confirmCartItems {
+  .confirmCartItemsContainer {
+    padding-right: 20px;
+    margin-left: 0;
+
+    img {
+      width: 5vw;
+    }
+
+    span,
+    a {
+      font-size: 1rem;
+      color: black;
+    }
+  }
+}
+
+.greenColor {
+  color: green;
+  font-weight: 500;
+}
+
+.redColor {
+  color: red;
+  font-weight: 500;
 }

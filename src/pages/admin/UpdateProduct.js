@@ -6,11 +6,15 @@ import {
   updateProduct,
   getProductDetails,
 } from "../../actions/productAction";
-import { Button } from "@mui/material";
+import { Button } from "react-bootstrap";
 import DescriptionIcon from "@mui/icons-material/Description";
 import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import LinkIcon from "@mui/icons-material/Link";
+import AppsIcon from "@mui/icons-material/Apps";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import SideBar from "./Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import { toast } from "react-toastify";
@@ -115,7 +119,9 @@ const UpdateProduct = () => {
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler}
           >
-            <h1>Update Product</h1>
+            <h1 style={{ fontSize: "1.5rem", marginBottom: "20px" }}>
+              Update Product
+            </h1>
 
             <div>
               <SpellcheckIcon />
@@ -150,7 +156,7 @@ const UpdateProduct = () => {
             </div>
 
             <div>
-              <StorageIcon />
+              <InventoryIcon />
               <input
                 type="number"
                 placeholder="stock"
@@ -160,17 +166,17 @@ const UpdateProduct = () => {
               />
             </div>
             <div>
-              <StorageIcon />
+              <LinkIcon />
               <input
                 type="text"
-                placeholder="chain"
+                placeholder="Blockchain"
                 required
                 value={chain}
                 onChange={(e) => setChain(e.target.value)}
               />
             </div>
             <div>
-              <StorageIcon />
+              <AppsIcon />
               <input
                 type="text"
                 placeholder="Collection Name"
@@ -180,7 +186,7 @@ const UpdateProduct = () => {
               />
             </div>
             <div>
-              <StorageIcon />
+              <AccountBoxIcon />
               <input
                 type="text"
                 placeholder="creator"
@@ -189,7 +195,12 @@ const UpdateProduct = () => {
                 onChange={(e) => setCreator(e.target.value)}
               />
             </div>
-
+            <div
+              className="label"
+              style={{ marginTop: "5px", fontWeight: "500" }}
+            >
+              <span>Product Image</span>
+            </div>
             <div id="createProductFormFile">
               <input
                 type="file"
@@ -205,16 +216,18 @@ const UpdateProduct = () => {
               </div>
             )}
 
-            <div id="createProductFormImage">
-              <img src={imagePreview} alt="Product Preview" />
-            </div>
+            {imagePreview && (
+              <div id="createProductFormImage">
+                <img src={imagePreview} alt="Product Preview" />
+              </div>
+            )}
 
             <Button
               id="createProductBtn"
               type="submit"
               disabled={loading ? true : false}
             >
-              Update
+              Update Product
             </Button>
           </form>
         </div>

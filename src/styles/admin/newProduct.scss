@@ -5,11 +5,11 @@
   border-left: 1px solid rgba(0, 0, 0, 0.158);
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: auto;
 }
 .newProductContainer h1 {
-  color: rgba(0, 0, 0, 0.733);
-  font: 300 2rem "Roboto";
+  color: rgba(0, 0, 0, 1);
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -17,13 +17,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
-  padding: 3vmax;
+  margin: 50px auto;
+  padding: 5%;
+  padding-top: 30px;
+  border-radius: 10px;
   justify-content: space-evenly;
-  height: 70%;
-  width: 40vh;
+  height: 100%;
+  width: 40vw;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
 
 .createProductForm > div {
@@ -38,17 +40,18 @@
   padding-right: 1vmax;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.267);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  font: 300 0.9vmax cursive;
+  font-size: 1rem;
   outline: none;
+  margin: 5px 0;
 }
 
 .createProductForm > div > svg {
   position: absolute;
   transform: translateX(1vmax);
   font-size: 1.6vmax;
-  color: rgba(0, 0, 0, 0.623);
+  color: rgba(0, 0, 0, 1);
 }
 
 #createProductFormFile > input {
@@ -63,10 +66,10 @@
   height: 5vh;
   border: none;
   margin: 0%;
-  font: 400 0.8vmax cursive;
+  font-size: 1rem;
   transition: all 0.5s;
   padding: 0 1vmax;
-  color: rgba(0, 0, 0, 0.623);
+  color: rgba(0, 0, 0, 1);
   background-color: rgb(255, 255, 255);
 }
 
@@ -84,21 +87,9 @@
   margin: 0 0.5vmax;
 }
 #createProductBtn {
-  border: none;
-  background-color: tomato;
-  color: white;
-  font: 300 0.9vmax "Roboto";
+  font-size: 1.1rem;
   width: 100%;
-  padding: 0.8vmax;
-  cursor: pointer;
-  transition: all 0.5s;
-  border-radius: 4px;
-  outline: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
-}
-
-#createProductBtn:hover {
-  background-color: rgb(179, 66, 46);
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 600px) {
@@ -128,10 +119,5 @@
   #createProductFormFile > input::file-selector-button {
     height: 7vh;
     font: 400 1.8vmax cursive;
-  }
-
-  #createProductBtn {
-    font: 300 1.9vmax "Roboto";
-    padding: 1.8vmax;
   }
 }

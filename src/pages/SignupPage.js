@@ -44,7 +44,9 @@ function SignupPage() {
           <h1 style={{ marginBottom: "40px" }}>SignUp</h1>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>
+              Name<span style={{ color: "red" }}>*</span>
+            </Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter name"
@@ -54,7 +56,9 @@ function SignupPage() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>
+              Email address<span style={{ color: "red" }}>*</span>
+            </Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
@@ -67,7 +71,9 @@ function SignupPage() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>
+              Password<span style={{ color: "red" }}>*</span>
+            </Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"
@@ -76,7 +82,7 @@ function SignupPage() {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" style={{width: "50%"}}>
             SignUp
           </Button>
         </Form>

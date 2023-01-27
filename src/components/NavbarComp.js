@@ -38,24 +38,24 @@ function NavbarComp() {
         <Container className="logo_links_container">
           {!isAuthenticated && (
             <Link to="/user/login" className="link">
-              Sign In
+              <Button variant="outline-light">Sign In </Button>
             </Link>
           )}
           {!isAuthenticated && (
             <Link to="/user/register" className="link">
-              Sign Up
+              <Button variant="primary">Sign Up </Button>
             </Link>
           )}
 
           {user?.role === "admin" && (
             <Link to="/admin/dashboard" className="link">
-              Admin Dashboard
+              <Button variant="success">Admin Dashboard </Button>
             </Link>
           )}
 
           {isAuthenticated && (
             <div className="link" onClick={logoutUser}>
-              LogOut
+              <Button variant="outline-danger">Logout </Button>
             </div>
           )}
         </Container>
@@ -95,6 +95,7 @@ const styles = {
     position: "absolute",
     right: 5,
     top: -5,
+    color: "black",
   },
 };
 

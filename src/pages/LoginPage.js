@@ -47,7 +47,9 @@ function LoginPage() {
         <Form onSubmit={handleFormSubmit} className="signup_form">
           <h1 style={{ marginBottom: "40px" }}>SignIn</h1>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>
+              Email address<span style={{ color: "red" }}>*</span>
+            </Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
@@ -61,7 +63,9 @@ function LoginPage() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>
+              Password<span style={{ color: "red" }}>*</span>
+            </Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"
@@ -71,7 +75,7 @@ function LoginPage() {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" style={{ width: "50%" }}>
             LogIn
           </Button>
         </Form>

@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
 function Filters({ products, filteredProducts, setFilteredProducts }) {
+  const [filterChanged, setFilterChanged] = useState(false);
+
+  // search filter
   const handleSearchFilter = (e) => {
     const searchWord = e.target.value;
     if (searchWord === "") {
       setFilteredProducts(products);
+      return;
     }
     const searchedProducts = products.filter((product) => {
       return product.title.toLowerCase().includes(searchWord.toLowerCase());
@@ -13,7 +17,7 @@ function Filters({ products, filteredProducts, setFilteredProducts }) {
     setFilteredProducts(searchedProducts);
   };
 
-  // collection filter
+  // styling for react-select in filter
   const singleInputStyle = {
     control: (baseStyles, state) => ({
       ...baseStyles,
@@ -30,7 +34,7 @@ function Filters({ products, filteredProducts, setFilteredProducts }) {
     }),
   };
 
-  // get all the authors of the issues in the project
+  // get all the authors of the products in the project
   let collectionNames = products.map((product) => product.collectionName);
   // to remove duplicate authors
   collectionNames = [...new Set(collectionNames)];
@@ -56,21 +60,32 @@ function Filters({ products, filteredProducts, setFilteredProducts }) {
   });
 
   const handleProductCollectionChange = (selectedOption) => {
-    let collectionFilteredProducts = products.filter(function checkCollection(
-      product
-    ) {
-      return product.collectionName === selectedOption.value;
-    });
-    setFilteredProducts(collectionFilteredProducts);
+    setFilterChanged(!filterChanged);
+
+    if (selectedOption !== null) {
+      let collectionFilteredProducts = filteredProducts.filter(
+        function checkCollection(product) {
+          return product.collectionName === selectedOption.value;
+        }
+      );
+      setFilteredProducts(collectionFilteredProducts);
+    } else {
+      setFilteredProducts(products);
+    }
   };
 
   const handleBlockchainChange = (selectedOption) => {
-    let blockchainFilteredProducts = products.filter(function checkCollection(
-      product
-    ) {
-      return product.chain === selectedOption.value;
-    });
-    setFilteredProducts(blockchainFilteredProducts);
+    setFilterChanged(!filterChanged);
+    if (selectedOption !== null) {
+      let blockchainFilteredProducts = filteredProducts.filter(
+        function checkCollection(product) {
+          return product.chain === selectedOption.value;
+        }
+      );
+      setFilteredProducts(blockchainFilteredProducts);
+    } else {
+      setFilteredProducts(products);
+    }
   };
 
   useEffect(() => {
@@ -111,7 +126,7 @@ function Filters({ products, filteredProducts, setFilteredProducts }) {
           options={blockchainOptions}
           closeMenuOnSelect={true}
           hideSelectedOptions={true}
-          name="Collection"
+          name="Blockchain"
           isClearable={true}
           className="basic-single"
           classNamePrefix="select"

@@ -36,9 +36,13 @@ function NavbarComp() {
         </Link>
 
         <Container className="logo_links_container">
+          <Link to="/" className="link">
+            <Button variant="outline-light"> Home </Button>
+          </Link>
+
           {!isAuthenticated && (
             <Link to="/user/login" className="link">
-              <Button variant="outline-light">Sign In </Button>
+              <Button variant="light">Sign In </Button>
             </Link>
           )}
           {!isAuthenticated && (

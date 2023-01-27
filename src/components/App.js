@@ -25,6 +25,8 @@ import Dashboard from "../pages/admin/Dashboard";
 import ProductList from "../pages/admin/ProductList";
 import { NewProduct } from "../pages/admin/NewProduct";
 import UpdateProduct from "../pages/admin/UpdateProduct";
+import OrderList from "../pages/admin/OrderList";
+import ProcessOrder from "../pages/admin/ProcessOrder";
 
 function App() {
   const [addToCartProducts, setAddToCartProducts] = useState([]);
@@ -136,6 +138,24 @@ function App() {
           element={
             <ProtectedRoute isAdmin={true}>
               <UpdateProduct />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/orders"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <OrderList />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/order/:id"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <ProcessOrder />
             </ProtectedRoute>
           }
         />

@@ -94,6 +94,7 @@ const UpdateProduct = () => {
 
     setImage();
     setImagePreview();
+    setOldImage();
 
     const reader = new FileReader();
 
@@ -134,6 +135,7 @@ const UpdateProduct = () => {
               <input
                 type="number"
                 placeholder="Price"
+                value={price}
                 required
                 onChange={(e) => setPrice(e.target.value)}
               />
@@ -141,7 +143,6 @@ const UpdateProduct = () => {
 
             <div>
               <DescriptionIcon />
-
               <textarea
                 placeholder="Product Description"
                 value={description}
@@ -157,6 +158,7 @@ const UpdateProduct = () => {
                 type="number"
                 placeholder="stock"
                 required
+                value={stock}
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
@@ -200,6 +202,12 @@ const UpdateProduct = () => {
               />
             </div>
 
+            {oldImage && (
+              <div id="createProductFormImage">
+                <img src={oldImage.url} alt="Product Preview" />
+              </div>
+            )}
+
             <div id="createProductFormImage">
               <img src={imagePreview} alt="Product Preview" />
             </div>
@@ -209,7 +217,7 @@ const UpdateProduct = () => {
               type="submit"
               disabled={loading ? true : false}
             >
-              Create
+              Update
             </Button>
           </form>
         </div>

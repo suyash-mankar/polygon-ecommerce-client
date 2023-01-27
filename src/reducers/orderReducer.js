@@ -155,7 +155,7 @@ export const orderReducer = (state = {}, action) => {
       return {
         ...state,
         error: null,
-      };
+      };    
 
     default:
       return state;

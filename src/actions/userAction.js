@@ -46,7 +46,10 @@ export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
-    const config = { headers: { "Content-Type": "application/json" } };
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: "true",
+    };
 
     const { data } = await axios.post(
       process.env.REACT_APP_MODE === "production"
@@ -80,12 +83,8 @@ export const register = (name, email, password) => async (dispatch) => {
     dispatch({ type: REGISTER_USER_REQUEST });
 
     const config = {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Headers": true,
-      },
-      credentials: 'include',
+      headers: { "Content-Type": "application/json" },
+      withCredentials: "true",
     };
 
     const { data } = await axios.post(
@@ -115,7 +114,8 @@ export const loadUser = () => async (dispatch) => {
     const { data } = await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/user/me`
-        : `/user/me`
+        : `/user/me`,
+      { withCredentials: "true" }
     );
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });

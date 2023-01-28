@@ -90,7 +90,6 @@ function Cart() {
               ))}
 
             <div className="cartGrossProfit">
-              <div></div>
               <div className="cartGrossProfitBox">
                 <p>Gross Total</p>
                 <p>{`$${cartItems.reduce(

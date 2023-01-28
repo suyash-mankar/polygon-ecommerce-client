@@ -1,4 +1,4 @@
-.checkout_steps_container{
+.checkout_steps_container {
   margin-top: 50px;
 }
 
@@ -83,25 +83,30 @@
   background-color: #0b47a1;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 992px) {
   .shippingBox {
     width: 100vw;
     height: 95vh;
   }
 
   .shippingHeading {
-    font: 400 6vw "Roboto";
+    font-size: 1.5rem;
     padding: 5vw;
   }
 
   .shippingForm {
     padding: 11vw;
+    margin-top: 20px;
+  }
+
+  .shippingForm > div {
+    margin-bottom: 5px;
   }
 
   .shippingForm > div > input,
   .shippingForm > div > select {
     padding: 5vw 10vw;
-    font: 300 4vw cursive;
+    font-size: 1rem;
   }
 
   .shippingForm > div > svg {
@@ -110,7 +115,7 @@
   }
 
   .shippingBtn {
-    font: 300 4vw "Roboto";
+    font-size: 1.1rem;
     padding: 4vw;
   }
 }

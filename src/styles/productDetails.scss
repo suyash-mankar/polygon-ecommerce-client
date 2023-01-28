@@ -29,9 +29,9 @@
     flex-direction: column;
     padding: 3% 10%;
 
-    .collection_creator_container{
+    .collection_creator_container {
       display: flex;
-      font-size: 0.9rem; 
+      font-size: 0.9rem;
       justify-content: space-between;
     }
 
@@ -69,6 +69,25 @@
       .greenColor {
         color: #198754;
         margin-left: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .product_details_container {
+    flex-direction: column;
+
+    .left_container {
+      width: 100%;
+    }
+
+    .right_container {
+      width: 100%;
+
+      .collection_creator_container {
+        flex-direction: column;
+        margin-top: 20px;
       }
     }
   }

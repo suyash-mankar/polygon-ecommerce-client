@@ -14,15 +14,23 @@
     }
   }
 
-  .logo_links_container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  #basic-navbar-nav {
+    .me-auto {
 
-    .link {
-      margin-right: 30px;
-      text-decoration: none;
-      color: white;
+      margin-right: 0!important;
+      margin-left: auto;
+
+      .logo_links_container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .link {
+          margin-right: 30px;
+          text-decoration: none;
+          color: white;
+        }
+      }
     }
   }
 }

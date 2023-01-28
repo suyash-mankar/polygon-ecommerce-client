@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Navbar, Button } from "react-bootstrap";
+import { Container, Navbar, Button, Nav } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -35,34 +35,40 @@ function NavbarComp() {
           </Navbar.Brand>
         </Link>
 
-        <Container className="logo_links_container">
-          <Link to="/" className="link">
-            <Button variant="outline-light"> Home </Button>
-          </Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-          {!isAuthenticated && (
-            <Link to="/user/login" className="link">
-              <Button variant="light">Sign In </Button>
-            </Link>
-          )}
-          {!isAuthenticated && (
-            <Link to="/user/register" className="link">
-              <Button variant="primary">Sign Up </Button>
-            </Link>
-          )}
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Container className="logo_links_container">
+              <Link to="/" className="link">
+                <Button variant="outline-light"> Home </Button>
+              </Link>
 
-          {user?.role === "admin" && (
-            <Link to="/admin/dashboard" className="link">
-              <Button variant="success">Admin Dashboard </Button>
-            </Link>
-          )}
+              {!isAuthenticated && (
+                <Link to="/user/login" className="link">
+                  <Button variant="light">Sign In </Button>
+                </Link>
+              )}
+              {!isAuthenticated && (
+                <Link to="/user/register" className="link">
+                  <Button variant="primary">Sign Up </Button>
+                </Link>
+              )}
 
-          {isAuthenticated && (
-            <div className="link" onClick={logoutUser}>
-              <Button variant="outline-danger">Logout </Button>
-            </div>
-          )}
-        </Container>
+              {user?.role === "admin" && (
+                <Link to="/admin/dashboard" className="link">
+                  <Button variant="success">Admin Dashboard </Button>
+                </Link>
+              )}
+
+              {isAuthenticated && (
+                <div className="link" onClick={logoutUser}>
+                  <Button variant="outline-danger">Logout </Button>
+                </div>
+              )}
+            </Container>
+          </Nav>
+        </Navbar.Collapse>
 
         <Link to="/cart" style={styles.cartIconContainer}>
           <img

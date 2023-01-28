@@ -56,43 +56,47 @@ function Home() {
                 {products &&
                   filteredProducts.map((product) => {
                     return (
-                      <Link
-                        to={`/products/${product._id}`}
-                        key={product._id}
-                        className="product_card"
-                      >
-                        <img
-                          src={product.image.url}
-                          alt="product"
-                          className="product_img"
-                        />
+                      <div key={product._id} className="product_card">
+                        <Link
+                          to={`/products/${product._id}`}
+                          className="product_card_clickable"
+                        >
+                          <img
+                            src={product.image.url}
+                            alt="product"
+                            className="product_img"
+                          />
 
-                        <div className="product_details">
-                          <p className="collection_name">
-                            {product.collectionName}
-                            <img
-                              src="https://cdn-icons-png.flaticon.com/512/7641/7641727.png"
-                              alt="verified-icon"
-                              style={{ width: "20px", marginLeft: "5px" }}
-                            />
-                          </p>
-                          <p className="product_title">{product.title}</p>
-                          <p className="product_price">
-                            <span>Price:</span> ${product.price}
-                          </p>
-                          <p className="product_chain">
-                            <span>Chain:</span> {product.chain}
-                          </p>
-                          <Button
-                            variant="primary"
-                            onClick={() => {
-                              addToCartHandler(product._id);
-                            }}
-                          >
-                            Add to cart
-                          </Button>
-                        </div>
-                      </Link>
+                          <div className="product_details">
+                            <p className="collection_name">
+                              {product.collectionName}
+                              <img
+                                src="https://cdn-icons-png.flaticon.com/512/7641/7641727.png"
+                                alt="verified-icon"
+                                style={{ width: "20px", marginLeft: "5px" }}
+                              />
+                            </p>
+                            <p className="product_title">{product.title}</p>
+                            <p className="product_price">
+                              <span>Price:</span> ${product.price}
+                            </p>
+                            <p className="product_chain">
+                              <span>Chain:</span> {product.chain}
+                            </p>
+                          </div>
+                        </Link>
+
+                        <Button
+                          variant="primary"
+                          onClick={() => {
+                            addToCartHandler(product._id);
+
+                          }}
+                          className="addtocart_btn"
+                        >
+                          Add to cart
+                        </Button>
+                      </div>
                     );
                   })}
               </>

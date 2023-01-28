@@ -92,19 +92,22 @@
   margin-top: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 992px) {
   .newProductContainer {
     background-color: rgb(255, 255, 255);
+    justify-content: center;
   }
   .createProductForm {
-    padding: 5vmax;
+    padding: 3vmax;
+    margin: 1vmax;
+    width: 95vw;
   }
 
   .createProductForm > div > input,
   .createProductForm > div > select,
   .createProductForm > div > textarea {
     padding: 2.5vmax 5vmax;
-    font: 300 1.7vmax cursive;
+    font-size: 1rem;
   }
 
   .createProductForm > div > svg {
@@ -118,6 +121,6 @@
 
   #createProductFormFile > input::file-selector-button {
     height: 7vh;
-    font: 400 1.8vmax cursive;
+    font-size: 1rem;
   }
 }

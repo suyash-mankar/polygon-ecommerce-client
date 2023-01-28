@@ -49,8 +49,8 @@
   background-color: #198754;
   text-decoration: none;
   padding: 1.5rem;
-  width: 10vmax;
-  height: 10vmax;
+  width: 15vmax;
+  height: 15vmax;
   margin: 2rem;
   border-radius: 10px;
   display: flex;
@@ -90,15 +90,38 @@
 
   .dashboardContainer {
     border-left: none;
+    padding-top: 0;
+
+    h1{
+      font-weight: 500;
+      padding-bottom: 0;
+    }
   }
 
   .dashboardSummary > div > p {
     margin: 0;
+
+  }
+
+
+  .dashboardSummaryBox2{
+    flex-direction: column  ;
   }
 
   .dashboardSummaryBox2 > a {
+    width: 90%;
     padding: 0.5rem;
     margin: 1rem;
-    font: 300 0.9rem "Roboto";
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p{
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin: 0;
+      margin-right: 10px;
+    }
   }
 }

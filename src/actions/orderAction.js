@@ -33,7 +33,8 @@ export const createOrder = (order) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/order/new`,
+      // `${process.env.REACT_APP_SERVER_URL}/order/new`,
+      `/order/new`,
       order,
       config
     );
@@ -53,7 +54,8 @@ export const myOrders = () => async (dispatch) => {
     dispatch({ type: MY_ORDERS_REQUEST });
 
     const { data } = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/orders/me`
+      // `${process.env.REACT_APP_SERVER_URL}/orders/me`
+      `/orders/me`
     );
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
@@ -71,7 +73,8 @@ export const getAllOrders = () => async (dispatch) => {
     dispatch({ type: ALL_ORDERS_REQUEST });
 
     const { data } = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/order/admin/all`
+      // `${process.env.REACT_APP_SERVER_URL}/order/admin/all`
+      `/order/admin/all`
     );
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
@@ -94,7 +97,8 @@ export const updateOrder = (id, order) => async (dispatch) => {
       },
     };
     const { data } = await axios.put(
-      `${process.env.REACT_APP_SERVER_URL}/order/admin/${id}`,
+      // `${process.env.REACT_APP_SERVER_URL}/order/admin/${id}`,
+      `/order/admin/${id}`,
       order,
       config
     );
@@ -114,7 +118,8 @@ export const deleteOrder = (id) => async (dispatch) => {
     dispatch({ type: DELETE_ORDER_REQUEST });
 
     const { data } = await axios.delete(
-      `${process.env.REACT_APP_SERVER_URL}/order/admin/${id}`
+      // `${process.env.REACT_APP_SERVER_URL}/order/admin/${id}`
+      `/order/admin/${id}`
     );
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
@@ -132,7 +137,8 @@ export const getOrderDetails = (id) => async (dispatch) => {
     dispatch({ type: ORDER_DETAILS_REQUEST });
 
     const { data } = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/order/${id}`
+      // `${process.env.REACT_APP_SERVER_URL}/order/${id}`
+      `/order/${id}`
     );
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });

@@ -36,16 +36,18 @@ function App() {
 
   async function getStripeApiKey() {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/payment/stripeapikey`
+      // `${process.env.REACT_APP_SERVER_URL}/payment/stripeapikey`
+      `/payment/stripeapikey`
     );
+
     setStripeApiKey(data.stripeApiKey);
   }
 
   useEffect(() => {
-    if (isAuthenticated) {
-      store.dispatch(loadUser());
-      getStripeApiKey();
-    }
+    // if (isAuthenticated) {
+    store.dispatch(loadUser());
+    getStripeApiKey();
+    // }
   }, []);
 
   return (

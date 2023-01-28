@@ -27,7 +27,8 @@ export const getProduct = () => async (dispatch) => {
     dispatch({ type: ALL_PRODUCT_REQUEST });
 
     const { data } = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/products/all`
+      // `${process.env.REACT_APP_SERVER_URL}/products/all`
+      `/products/all`
     );
 
     dispatch({
@@ -47,7 +48,8 @@ export const getAdminProduct = () => async (dispatch) => {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
     const { data } = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/products/admin/all`
+      // `${process.env.REACT_APP_SERVER_URL}/products/admin/all`
+      `/products/admin/all`
     );
 
     dispatch({
@@ -72,7 +74,8 @@ export const createProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/products/admin/create`,
+      // `${process.env.REACT_APP_SERVER_URL}/products/admin/create`,
+      `/products/admin/create`,
       productData,
       config
     );
@@ -99,7 +102,8 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `${process.env.REACT_APP_SERVER_URL}/products/admin/${id}`,
+      // `${process.env.REACT_APP_SERVER_URL}/products/admin/${id}`,
+      `/products/admin/${id}`,
       productData,
       config
     );
@@ -122,7 +126,8 @@ export const deleteProduct = (id) => async (dispatch) => {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
     const { data } = await axios.delete(
-      `${process.env.REACT_APP_SERVER_URL}/products/admin/${id}`
+      // `${process.env.REACT_APP_SERVER_URL}/products/admin/${id}`
+      `/products/admin/${id}`
     );
 
     dispatch({
@@ -142,7 +147,8 @@ export const getProductDetails = (id) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
     const { data } = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/products/${id}`
+      // `${process.env.REACT_APP_SERVER_URL}/products/${id}`
+      `/products/${id}`
     );
 
     dispatch({

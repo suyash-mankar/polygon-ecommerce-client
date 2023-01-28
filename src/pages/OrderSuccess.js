@@ -12,22 +12,22 @@ function OrderSuccess() {
 
   const dispatch = useDispatch();
 
+  const order = {
+    shippingInfo,
+    orderItems: cartItems,
+    itemsPrice: orderInfo.subtotal,
+    taxPrice: orderInfo.tax,
+    shippingPrice: orderInfo.shippingCharges,
+    totalPrice: orderInfo.totalPrice,
+  };
+
+  order.paymentInfo = {
+    id: "temp_id",
+    status: "succeeded",
+  };
+
   useEffect(() => {
-    if (isAuthenticated) {
-      const order = {
-        shippingInfo,
-        orderItems: cartItems,
-        itemsPrice: orderInfo.subtotal,
-        taxPrice: orderInfo.tax,
-        shippingPrice: orderInfo.shippingCharges,
-        totalPrice: orderInfo.totalPrice,
-      };
-
-      order.paymentInfo = {
-        id: "temp_id",
-        status: "succeeded",
-      };
-
+    if (user) {
       dispatch(createOrder(order));
     }
   }, []);

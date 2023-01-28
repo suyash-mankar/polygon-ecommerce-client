@@ -7,9 +7,6 @@ const ProtectedRoute = ({ isAdmin, children }) => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
-  console.log("loading", loading);
-  console.log("isAuthenticated", isAuthenticated);
-
   if (loading === false) {
     if (isAuthenticated === false) {
       console.log("inside");
@@ -20,9 +17,6 @@ const ProtectedRoute = ({ isAdmin, children }) => {
       return navigate("/user/login");
     }
   }
-
-  console.log("children", children);
-  console.log("isAdmin", isAdmin);
 
   return children;
 };

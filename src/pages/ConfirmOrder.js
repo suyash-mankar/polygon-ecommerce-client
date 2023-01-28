@@ -1,14 +1,18 @@
 import React, { Fragment } from "react";
 import CheckoutSteps from "./CheckoutSteps";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import "../styles/confirmOrder.scss";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
+import { createOrder } from "../actions/orderAction";
 
-function ConfirmOrder() {
+function ConfirmOrder({ stripeApiKey }) {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
+
   const navigate = useNavigate();
 
   const subtotal = cartItems.reduce(
@@ -24,7 +28,16 @@ function ConfirmOrder() {
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
-  const proceedToPayment = () => {
+  // let stripePromise;
+
+  // const getStripe = () => {
+  //   if (!stripePromise) {
+  //     stripePromise = loadStripe(stripeApiKey);
+  //   }
+  //   return stripePromise;
+  // };
+
+  const proceedToPayment = async () => {
     const data = {
       subtotal,
       shippingCharges,
@@ -33,6 +46,14 @@ function ConfirmOrder() {
     };
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
+
+    // const res = await axios.post("/payment/create-checkout-session", {
+    //   cartItems: cartItems,
+    // });
+
+    // const stripe = await getStripe();
+
+    // stripe.redirectToCheckout({ sessionId: res.data.session.id });
 
     navigate("/payment/process");
   };

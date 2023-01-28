@@ -45,6 +45,7 @@ function App() {
     getStripeApiKey();
   }, []);
 
+
   return (
     <Router>
       <NavbarComp addToCartCount={addToCartCount} />
@@ -75,14 +76,16 @@ function App() {
           }
         />
 
-        <Route
-          path="/order/confirm"
-          element={
-            <ProtectedRoute>
-              <ConfirmOrder />
-            </ProtectedRoute>
-          }
-        />
+        {stripeApiKey && (
+          <Route
+            path="/order/confirm"
+            element={
+              <ProtectedRoute>
+                <ConfirmOrder stripeApiKey={stripeApiKey} />
+              </ProtectedRoute>
+            }
+          />
+        )}
 
         <Route
           path="/payment/process"

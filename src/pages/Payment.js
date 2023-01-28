@@ -57,7 +57,7 @@ function Payment() {
         },
       };
       const { data } = await axios.post(
-        "/payment/process",
+        `${process.env.REACT_APP_SERVER_URL}/payment/process`,
         paymentData,
         config
       );

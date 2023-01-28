@@ -47,7 +47,7 @@ function ConfirmOrder({ stripeApiKey }) {
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
-    const res = await axios.post("/payment/create-checkout-session", {
+    const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/payment/create-checkout-session`, {
       cartItems: cartItems,
     });
 

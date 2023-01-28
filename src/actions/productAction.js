@@ -26,7 +26,9 @@ export const getProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCT_REQUEST });
 
-    const { data } = await axios.get(`/products/all`);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/products/all`
+    );
 
     dispatch({
       type: ALL_PRODUCT_SUCCESS,
@@ -44,7 +46,9 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("/products/admin/all");
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/products/admin/all`
+    );
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -68,7 +72,7 @@ export const createProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/products/admin/create`,
+      `${process.env.REACT_APP_SERVER_URL}/products/admin/create`,
       productData,
       config
     );
@@ -95,7 +99,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/products/admin/${id}`,
+      `${process.env.REACT_APP_SERVER_URL}/products/admin/${id}`,
       productData,
       config
     );
@@ -117,7 +121,9 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`/products/admin/${id}`);
+    const { data } = await axios.delete(
+      `${process.env.REACT_APP_SERVER_URL}/products/admin/${id}`
+    );
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -135,7 +141,9 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/products/${id}`);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/products/${id}`
+    );
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,

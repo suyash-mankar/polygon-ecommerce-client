@@ -37,7 +37,7 @@ function LoginPage() {
     if (isAuthenticated) {
       navigate(redirectLink);
     }
-  }, [dispatch, error, isAuthenticated, redirectLink]);
+  }, [dispatch, error, isAuthenticated, redirectLink, loading]);
 
   return (
     <div className="signin_page_container">

@@ -115,14 +115,14 @@ function Payment() {
   }, [dispatch, error]);
 
   return (
-    <Fragment >
+    <Fragment>
       <div className="checkout_steps_container">
         <CheckoutSteps activeStep={2} />
       </div>
 
       <div className="paymentContainer">
         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-          <h3 style={{textAlign: "center", marginTop: "0px"}}>Card Info</h3>
+          <h3 style={{ textAlign: "center", marginTop: "0px" }}>Card Info</h3>
           <div>
             <CreditCardIcon />
             <CardNumberElement className="paymentInput" />

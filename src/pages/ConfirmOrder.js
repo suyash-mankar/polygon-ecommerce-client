@@ -28,14 +28,14 @@ function ConfirmOrder({ stripeApiKey }) {
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
-  // let stripePromise;
+  let stripePromise;
 
-  // const getStripe = () => {
-  //   if (!stripePromise) {
-  //     stripePromise = loadStripe(stripeApiKey);
-  //   }
-  //   return stripePromise;
-  // };
+  const getStripe = () => {
+    if (!stripePromise) {
+      stripePromise = loadStripe(stripeApiKey);
+    }
+    return stripePromise;
+  };
 
   const proceedToPayment = async () => {
     const data = {
@@ -47,15 +47,15 @@ function ConfirmOrder({ stripeApiKey }) {
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
-    // const res = await axios.post("/payment/create-checkout-session", {
-    //   cartItems: cartItems,
-    // });
+    const res = await axios.post("/payment/create-checkout-session", {
+      cartItems: cartItems,
+    });
 
-    // const stripe = await getStripe();
+    const stripe = await getStripe();
 
-    // stripe.redirectToCheckout({ sessionId: res.data.session.id });
+    stripe.redirectToCheckout({ sessionId: res.data.id });
 
-    navigate("/payment/process");
+    // navigate("/payment/process");
   };
 
   return (
@@ -101,7 +101,6 @@ function ConfirmOrder({ stripeApiKey }) {
             </div>
           </div>
         </div>
-        {/*  */}
         <div>
           <div className="orderSummary">
             <Typography>Order Summery</Typography>

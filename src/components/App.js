@@ -29,7 +29,6 @@ import OrderList from "../pages/admin/OrderList";
 import ProcessOrder from "../pages/admin/ProcessOrder";
 
 function App() {
-  const [addToCartProducts, setAddToCartProducts] = useState([]);
   const [addToCartCount, setAddToCartCount] = useState(0);
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -45,23 +44,12 @@ function App() {
     getStripeApiKey();
   }, []);
 
-
   return (
     <Router>
       <NavbarComp addToCartCount={addToCartCount} />
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              addToCartCount={addToCartCount}
-              setAddToCartCount={setAddToCartCount}
-              addToCartProducts={addToCartProducts}
-              setAddToCartProducts={setAddToCartProducts}
-            />
-          }
-        />
+        <Route path="/" element={<Home />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/search" element={<Search />} />
         <Route path="/user/login" element={<LoginPage />} />
@@ -76,16 +64,14 @@ function App() {
           }
         />
 
-        {stripeApiKey && (
-          <Route
-            path="/order/confirm"
-            element={
-              <ProtectedRoute>
-                <ConfirmOrder stripeApiKey={stripeApiKey} />
-              </ProtectedRoute>
-            }
-          />
-        )}
+        <Route
+          path="/order/confirm"
+          element={
+            <ProtectedRoute>
+              <ConfirmOrder stripeApiKey={stripeApiKey} />
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           path="/payment/process"

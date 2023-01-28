@@ -33,7 +33,7 @@ export const createOrder = (order) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      process.env.REACT_APP_MODE === production
+      process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/order/new`
         : `/order/new`,
       order,
@@ -55,7 +55,7 @@ export const myOrders = () => async (dispatch) => {
     dispatch({ type: MY_ORDERS_REQUEST });
 
     const { data } = await axios.get(
-      process.env.REACT_APP_MODE === production
+      process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/orders/me`
         : `/orders/me`
     );
@@ -75,7 +75,7 @@ export const getAllOrders = () => async (dispatch) => {
     dispatch({ type: ALL_ORDERS_REQUEST });
 
     const { data } = await axios.get(
-      process.env.REACT_APP_MODE === production
+      process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/order/admin/all`
         : `/order/admin/all`
     );
@@ -100,7 +100,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
       },
     };
     const { data } = await axios.put(
-      process.env.REACT_APP_MODE === production
+      process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/order/admin/${id}`
         : `/order/admin/${id}`,
       order,
@@ -122,7 +122,7 @@ export const deleteOrder = (id) => async (dispatch) => {
     dispatch({ type: DELETE_ORDER_REQUEST });
 
     const { data } = await axios.delete(
-      process.env.REACT_APP_MODE === production
+      process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/order/admin/${id}`
         : `/order/admin/${id}`
     );
@@ -142,7 +142,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
     dispatch({ type: ORDER_DETAILS_REQUEST });
 
     const { data } = await axios.get(
-      process.env.REACT_APP_MODE === production
+      process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/order/${id}`
         : `/order/${id}`
     );

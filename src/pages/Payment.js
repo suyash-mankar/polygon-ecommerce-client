@@ -57,8 +57,9 @@ function Payment() {
         },
       };
       const { data } = await axios.post(
-        // `${process.env.REACT_APP_SERVER_URL}/payment/process`,
-        `/payment/process`,
+        process.env.REACT_APP_MODE === production
+          ? `${process.env.REACT_APP_SERVER_URL}/payment/process`
+          : `/payment/process`,
         paymentData,
         config
       );

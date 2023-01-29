@@ -8,7 +8,6 @@ import {
   CardExpiryElement,
   useStripe,
   useElements,
-  CardElement,
 } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 
@@ -128,15 +127,76 @@ function Payment() {
 
       <div className="paymentContainer">
         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-          <h3 style={{ textAlign: "center", marginTop: "0px" }}>Card Info</h3>
+          <h3
+            style={{
+              textAlign: "center",
+              marginTop: "0",
+              marginBottom: "0px",
+              borderBottom: "1px solid lightgrey",
+              paddingBottom: "10px",
+            }}
+          >
+            Pay with card
+          </h3>
+          <p
+            style={{
+              fontSize: "0.8rem",
+              color: "grey",
+              // borderTop: "1px solid lightgrey",
+              borderBottom: "0",
+              padding: "0",
+              marginTop: "10px",
+              marginBottom: "30px",
+            }}
+          >
+            -powered by stripe
+          </p>
+          <span>Card Number</span>
           <div>
             <CreditCardIcon />
             <CardNumberElement className="paymentInput" />
+
+            {/* <div
+              class="FormFieldInput-Icons"
+            >
+              <div style={{ transform: "none", display: "flex" }}>
+                <span class="FormFieldInput-IconsIcon is-visible">
+                  <img
+                    src="https://js.stripe.com/v3/fingerprinted/img/visa-729c05c240c4bdb47b03ac81d9945bfe.svg"
+                    alt="Visa"
+                    className="BrandIcon"
+                    style={{ width: "1.5rem", marginLeft: "5px" }}
+                  />
+                </span>
+                <div style={{ transform: "none" }}>
+                  <span class="FormFieldInput-IconsIcon is-visible">
+                    <img
+                      src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d8844094130711885b5e41b28c9848f.svg"
+                      alt="MasterCard"
+                      className="BrandIcon"
+                      style={{ width: "1.5rem", marginLeft: "5px" }}
+                    />
+                  </span>
+                </div>
+                <div style={{ transform: "none" }}>
+                  <span class="FormFieldInput-IconsIcon is-visible">
+                    <img
+                      src="https://js.stripe.com/v3/fingerprinted/img/amex-a49b82f46c5cd6a96a6e418a6ca1717c.svg"
+                      alt="Amex"
+                      className="BrandIcon"
+                      style={{ width: "1.5rem", marginLeft: "5px" }}
+                    />
+                  </span>
+                </div>
+              </div>
+            </div> */}
           </div>
+          <span>Expiry</span>
           <div>
             <EventIcon />
             <CardExpiryElement className="paymentInput" />
           </div>
+          <span>CVC</span>
           <div>
             <VpnKeyIcon />
             <CardCvcElement className="paymentInput" />

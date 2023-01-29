@@ -30,7 +30,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      // toast.error(error);
       dispatch(clearErrors());
     }
 
@@ -46,6 +46,14 @@ function LoginPage() {
       ) : (
         <Form onSubmit={handleFormSubmit} className="signup_form">
           <h1 style={{ marginBottom: "40px" }}>SignIn</h1>
+          <p>
+            <span style={{ fontWeight: 500, color: "#0D6EFD" }}>
+              Admin account:
+            </span>{" "}<br />
+            <span style={{ color: "green" }}>
+              Email - admin@gmail.com ; Password - admin
+            </span>
+          </p>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>
               Email address<span style={{ color: "red" }}>*</span>

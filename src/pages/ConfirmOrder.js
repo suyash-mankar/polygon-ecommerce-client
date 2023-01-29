@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import CheckoutSteps from "./CheckoutSteps";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ import { createOrder } from "../actions/orderAction";
 function ConfirmOrder({ stripeApiKey }) {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
+  const [redirectingStatus, setRedirectingStatus] = useState(false);
 
   const navigate = useNavigate();
 
@@ -59,6 +60,7 @@ function ConfirmOrder({ stripeApiKey }) {
 
     const stripe = await getStripe(stripeApiKey);
 
+    setRedirectingStatus(true);
     stripe.redirectToCheckout({ sessionId: res.data.id });
 
     // navigate("/payment/process");
@@ -132,7 +134,9 @@ function ConfirmOrder({ stripeApiKey }) {
               <span>${totalPrice}</span>
             </div>
 
-            <button onClick={proceedToPayment}>Proceed To Payment</button>
+            <button onClick={proceedToPayment}>
+              {redirectingStatus ? "Redirecting..." : "Proceed To Payment"}
+            </button>
           </div>
         </div>
       </div>

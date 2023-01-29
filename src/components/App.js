@@ -47,11 +47,11 @@ function App() {
 
   useEffect(() => {
     store.dispatch(loadUser());
-
-    // if (isAuthenticated) {
-    getStripeApiKey();
-    // }
   }, []);
+
+  useEffect(() => {
+    getStripeApiKey();
+  }, [isAuthenticated]);
 
   return (
     <Router>

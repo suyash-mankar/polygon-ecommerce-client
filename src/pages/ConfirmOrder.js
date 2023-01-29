@@ -20,7 +20,7 @@ function ConfirmOrder({ stripeApiKey }) {
     0
   );
 
-  const shippingCharges = subtotal > 1000 ? 0 : 200;
+  const shippingCharges = subtotal > 1000 ? 0 : 10;
 
   const tax = subtotal * 0.18;
 
@@ -53,10 +53,11 @@ function ConfirmOrder({ stripeApiKey }) {
         : `/payment/create-checkout-session`,
       {
         cartItems: cartItems,
-      }
+      },
+      { withCredentials: "true" }
     );
 
-    const stripe = await getStripe();
+    const stripe = await getStripe(stripeApiKey);
 
     stripe.redirectToCheckout({ sessionId: res.data.id });
 

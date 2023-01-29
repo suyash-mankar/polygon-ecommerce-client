@@ -55,6 +55,7 @@ function Payment() {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: "true",
       };
       const { data } = await axios.post(
         process.env.REACT_APP_MODE === "production"

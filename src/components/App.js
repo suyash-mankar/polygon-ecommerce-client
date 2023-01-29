@@ -38,7 +38,8 @@ function App() {
     const { data } = await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/payment/stripeapikey`
-        : `/payment/stripeapikey`
+        : `/payment/stripeapikey`,
+      { withCredentials: "true" }
     );
 
     setStripeApiKey(data.stripeApiKey);
@@ -47,9 +48,9 @@ function App() {
   useEffect(() => {
     store.dispatch(loadUser());
 
-    if (isAuthenticated) {
-      getStripeApiKey();
-    }
+    // if (isAuthenticated) {
+    getStripeApiKey();
+    // }
   }, []);
 
   return (

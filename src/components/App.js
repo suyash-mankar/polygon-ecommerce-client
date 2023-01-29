@@ -45,10 +45,11 @@ function App() {
   }
 
   useEffect(() => {
-    // if (isAuthenticated) {
     store.dispatch(loadUser());
-    getStripeApiKey();
-    // }
+
+    if (isAuthenticated) {
+      getStripeApiKey();
+    }
   }, []);
 
   return (

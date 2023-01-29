@@ -31,6 +31,7 @@ export const createOrder = (order) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
+      withCredentials: "true",
     };
     const { data } = await axios.post(
       process.env.REACT_APP_MODE === "production"
@@ -57,7 +58,8 @@ export const myOrders = () => async (dispatch) => {
     const { data } = await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/orders/me`
-        : `/orders/me`
+        : `/orders/me`,
+      { withCredentials: "true" }
     );
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
@@ -77,7 +79,8 @@ export const getAllOrders = () => async (dispatch) => {
     const { data } = await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/order/admin/all`
-        : `/order/admin/all`
+        : `/order/admin/all`,
+      { withCredentials: "true" }
     );
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
@@ -98,6 +101,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
+      withCredentials: "true",
     };
     const { data } = await axios.put(
       process.env.REACT_APP_MODE === "production"
@@ -124,7 +128,8 @@ export const deleteOrder = (id) => async (dispatch) => {
     const { data } = await axios.delete(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/order/admin/${id}`
-        : `/order/admin/${id}`
+        : `/order/admin/${id}`,
+      { withCredentials: "true" }
     );
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
@@ -144,7 +149,8 @@ export const getOrderDetails = (id) => async (dispatch) => {
     const { data } = await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/order/${id}`
-        : `/order/${id}`
+        : `/order/${id}`,
+      { withCredentials: "true" }
     );
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });

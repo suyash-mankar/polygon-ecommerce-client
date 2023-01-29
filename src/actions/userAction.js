@@ -10,18 +10,6 @@ import {
   LOAD_USER_FAIL,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
-  UPDATE_PROFILE_REQUEST,
-  UPDATE_PROFILE_SUCCESS,
-  UPDATE_PROFILE_FAIL,
-  UPDATE_PASSWORD_REQUEST,
-  UPDATE_PASSWORD_SUCCESS,
-  UPDATE_PASSWORD_FAIL,
-  FORGOT_PASSWORD_REQUEST,
-  FORGOT_PASSWORD_SUCCESS,
-  FORGOT_PASSWORD_FAIL,
-  RESET_PASSWORD_REQUEST,
-  RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAIL,
   ALL_USERS_REQUEST,
   ALL_USERS_SUCCESS,
   ALL_USERS_FAIL,
@@ -130,7 +118,8 @@ export const logout = () => async (dispatch) => {
     await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/user/logout`
-        : `/user/logout`
+        : `/user/logout`,
+      { withCredentials: "true" }
     );
 
     dispatch({ type: LOGOUT_SUCCESS });
@@ -146,7 +135,8 @@ export const getAllUsers = () => async (dispatch) => {
     const { data } = await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/user/admin/all`
-        : `/user/admin/all`
+        : `/user/admin/all`,
+      { withCredentials: "true" }
     );
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });

@@ -29,7 +29,8 @@ export const getProduct = () => async (dispatch) => {
     const { data } = await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/products/all`
-        : `/products/all`
+        : `/products/all`,
+      { withCredentials: "true" }
     );
 
     dispatch({
@@ -51,7 +52,8 @@ export const getAdminProduct = () => async (dispatch) => {
     const { data } = await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/products/admin/all`
-        : `/products/admin/all`
+        : `/products/admin/all`,
+      { withCredentials: "true" }
     );
 
     dispatch({
@@ -61,7 +63,7 @@ export const getAdminProduct = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: ADMIN_PRODUCT_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -73,6 +75,7 @@ export const createProduct = (productData) => async (dispatch) => {
 
     const config = {
       headers: { "Content-Type": "application/json" },
+      withCredentials: "true",
     };
 
     const { data } = await axios.post(
@@ -102,6 +105,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
 
     const config = {
       headers: { "Content-Type": "application/json" },
+      withCredentials: "true",
     };
 
     const { data } = await axios.put(
@@ -132,7 +136,8 @@ export const deleteProduct = (id) => async (dispatch) => {
     const { data } = await axios.delete(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/products/admin/${id}`
-        : `/products/admin/${id}`
+        : `/products/admin/${id}`,
+      { withCredentials: "true" }
     );
 
     dispatch({
@@ -154,7 +159,8 @@ export const getProductDetails = (id) => async (dispatch) => {
     const { data } = await axios.get(
       process.env.REACT_APP_MODE === "production"
         ? `${process.env.REACT_APP_SERVER_URL}/products/${id}`
-        : `/products/${id}`
+        : `/products/${id}`,
+      { withCredentials: "true" }
     );
 
     dispatch({

@@ -31,12 +31,12 @@ function ConfirmOrder({ stripeApiKey }) {
 
   let stripePromise;
 
-  const getStripe = () => {
-    if (!stripePromise) {
-      stripePromise = loadStripe(stripeApiKey);
-    }
-    return stripePromise;
-  };
+  // const getStripe = () => {
+  //   if (!stripePromise) {
+  //     stripePromise = loadStripe(stripeApiKey);
+  //   }
+  //   return stripePromise;
+  // };
 
   const proceedToPayment = async () => {
     const data = {
@@ -48,22 +48,22 @@ function ConfirmOrder({ stripeApiKey }) {
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
-    const res = await axios.post(
-      process.env.REACT_APP_MODE === "production"
-        ? `${process.env.REACT_APP_SERVER_URL}/payment/create-checkout-session`
-        : `/payment/create-checkout-session`,
-      {
-        cartItems: cartItems,
-      },
-      { withCredentials: "true" }
-    );
+    // const res = await axios.post(
+    //   process.env.REACT_APP_MODE === "production"
+    //     ? `${process.env.REACT_APP_SERVER_URL}/payment/create-checkout-session`
+    //     : `/payment/create-checkout-session`,
+    //   {
+    //     cartItems: cartItems,
+    //   },
+    //   { withCredentials: "true" }
+    // );
 
-    const stripe = await getStripe(stripeApiKey);
+    // const stripe = await getStripe(stripeApiKey);
 
-    setRedirectingStatus(true);
-    stripe.redirectToCheckout({ sessionId: res.data.id });
+    // setRedirectingStatus(true);
+    // stripe.redirectToCheckout({ sessionId: res.data.id });
 
-    // navigate("/payment/process");
+    navigate("/payment/process");
   };
 
   return (

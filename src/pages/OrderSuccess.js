@@ -10,27 +10,29 @@ function OrderSuccess() {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const order = {
-    shippingInfo,
-    orderItems: cartItems,
-    itemsPrice: orderInfo.subtotal,
-    taxPrice: orderInfo.tax,
-    shippingPrice: orderInfo.shippingCharges,
-    totalPrice: orderInfo.totalPrice,
-  };
+  // const order = {
+  //   shippingInfo,
+  //   orderItems: cartItems,
+  //   itemsPrice: orderInfo.subtotal,
+  //   taxPrice: orderInfo.tax,
+  //   shippingPrice: orderInfo.shippingCharges,
+  //   totalPrice: orderInfo.totalPrice,
+  // };
 
-  order.paymentInfo = {
-    id: "temp_id",
-    status: "succeeded",
-  };
+  // order.paymentInfo = {
+  //   id: "temp_id",
+  //   status: "succeeded",
+  // };
 
-  useEffect(() => {
-    if (user) {
-      dispatch(createOrder(order));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user) {
+  //     dispatch(createOrder(order));
+  //   }
+  // }, []);
+
+
 
   return (
     <div className="orderSuccess">

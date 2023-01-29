@@ -7,7 +7,6 @@ import {
   ConfirmOrder,
 } from "../pages";
 import NavbarComp from "./NavbarComp";
-import Search from "./Search";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import store from "../store";
@@ -53,6 +52,10 @@ function App() {
     getStripeApiKey();
   }, [isAuthenticated]);
 
+  const Page404 = () => {
+    return <h1> 404: PAGE NOT FOUND </h1>;
+  };
+
   return (
     <Router>
       <NavbarComp addToCartCount={addToCartCount} />
@@ -60,7 +63,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/search" element={<Search />} />
         <Route path="/user/login" element={<LoginPage />} />
         <Route path="/user/register" element={<SignupPage />} />
         <Route path="/cart" element={<Cart />} />
@@ -157,6 +159,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </Router>
   );

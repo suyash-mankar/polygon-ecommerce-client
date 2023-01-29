@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import CheckoutSteps from "./CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import { Typography } from "@mui/material";
@@ -22,6 +22,7 @@ import { toast } from "react-toastify";
 
 function Payment() {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+  const [makingPayment, setMakingPayment] = useState(false);
 
   const dispatch = useDispatch();
   const stripe = useStripe();
@@ -49,6 +50,7 @@ function Payment() {
   const submitHandler = async (e) => {
     e.preventDefault();
     payBtn.current.disabled = true;
+    setMakingPayment(true);
 
     try {
       const config = {
@@ -92,6 +94,7 @@ function Payment() {
       } else {
         if (result.paymentIntent.status === "succeeded") {
           toast.success("Payment successfully made");
+
           order.paymentInfo = {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
@@ -141,7 +144,11 @@ function Payment() {
 
           <input
             type="submit"
-            value={`Pay - $${orderInfo && orderInfo.totalPrice}`}
+            value={
+              makingPayment
+                ? "Making Payment..."
+                : `Pay - $${orderInfo && orderInfo.totalPrice}`
+            }
             ref={payBtn}
             className="paymentFormBtn"
           />
